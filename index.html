@@ -1,0 +1,3067 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SICI — Social Institute of Change and Impact</title>
+<link rel="canonical" href="https://sici.uk/">
+<meta name="description" content="SICI works on complex social and institutional problems through strategy, systems, knowledge and technology.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SICI — Social Institute of Change and Impact">
+<meta property="og:description" content="SICI works on complex social and institutional problems through strategy, systems, knowledge and technology.">
+<meta property="og:url" content="https://sici.uk/">
+<meta property="og:image" content="https://sici.uk/assets/sici-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stage-bg:#FCFCFB;
+  --stage-fg:#08090B;
+  --stage-muted:#7E8795;
+  --stage-line:#DADDE2;
+  --orb-bg:#FFFFFF;
+  --orb-fg:#08090B;
+  --orb-border:#08090B;
+  --focus-bg:#FFFFFF;
+  --focus-fg:#08090B;
+  --focus-glow:rgba(255,255,255,.18);
+  --header-bg:rgba(255,255,255,.90);
+
+  --ink:#08090B;
+  --blue:#101217;
+  --blueDeep:#0B0D12;
+  --paper:#FCFCFB;
+  --line:#DADDE2;
+  --muted:#7E8795;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --page:0%;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--stage-bg);
+  color:var(--ink);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+.shell{width:min(calc(100% - 40px),1280px);margin:auto}
+
+/* Brand mark */
+.sici-mark{
+  display:inline-flex;align-items:flex-start;gap:.045em;
+  font-weight:800;letter-spacing:-.085em;line-height:.84
+}
+.sici-star{width:.60em;height:.60em;margin-top:-.05em;display:inline-block}
+.sici-star svg{display:block;width:100%;height:100%}
+
+/* Header */
+.header{
+  position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);
+  width:min(1120px,calc(100vw - 30px));
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 11px 9px 17px;
+  border:1px solid #eaedf1;border-radius:999px;
+  background:rgba(255,255,255,.90);
+  backdrop-filter:blur(20px);
+  box-shadow:0 5px 18px rgba(10,15,25,.04);
+  overflow:hidden
+}
+.header:after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:var(--page);
+  background:var(--stage-fg)
+}
+.header .sici-mark{font-size:24px}
+.nav{display:flex;gap:2px}
+.nav a{font-size:12px;font-weight:700;color:#6d7582;padding:8px 10px;border-radius:999px}
+.nav a:hover{background:#f3f5f7;color:#050608}
+.contact-btn{
+  padding:9px 14px;border-radius:999px;background:var(--stage-fg);color:#fff;
+  font-size:12px;font-weight:800
+}
+
+/* Story */
+.story{height:270vh;position:relative;background:var(--stage-bg);color:var(--stage-fg);transition:background .48s ease,color .48s ease}
+.stage{
+  position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--stage-bg);color:var(--stage-fg);transition:background .48s ease,color .48s ease
+}
+.stage-inner{
+  width:min(calc(100% - 48px),1320px);margin:auto;padding-top:78px;
+  display:grid;grid-template-columns:minmax(0,.78fr) minmax(560px,1.22fr);
+  gap:42px;align-items:center
+}
+
+/* Left */
+.copy{position:relative;z-index:20}
+.eyebrow{
+  margin-bottom:18px;
+  font-size:12px;font-weight:800;color:var(--stage-muted)
+}
+.title{
+  font-size:clamp(58px,6vw,96px);
+  line-height:.92;letter-spacing:-.068em;font-weight:800;min-height:1.94em
+}
+.title .row{display:block;overflow:hidden;padding-bottom:.04em}
+.title .row span{display:block;transition:opacity .2s ease,transform .46s var(--ease)}
+.summary{
+  margin-top:22px;max-width:520px;min-height:3.8em;
+  font-size:clamp(17px,1.25vw,20px);line-height:1.48;font-weight:600;color:var(--stage-muted);
+  transition:opacity .2s ease,transform .46s var(--ease)
+}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.primary,.secondary{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 16px;border-radius:999px;font-size:12px;font-weight:800
+}
+.primary{background:var(--stage-fg);color:#fff}
+.secondary{border:1px solid #dfe3e8;background:#FCFCFB}
+.position{display:flex;align-items:center;gap:12px;margin-top:34px}
+.position strong{width:34px;font-size:24px;font-weight:800;letter-spacing:-.05em}
+.progress{width:172px;height:4px;background:color-mix(in srgb,var(--stage-fg) 12%,transparent);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--stage-fg);border-radius:99px;transition:width .25s ease}
+.position span{font-size:11px;font-weight:700;color:#7E8795}
+.scroll-cue{
+  position:absolute;left:0;bottom:-58px;
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;color:#7E8795
+}
+.scroll-cue:before{
+  content:"";width:36px;height:1px;background:var(--stage-fg);
+  animation:cue 1.8s ease-in-out infinite
+}
+@keyframes cue{
+  0%,100%{transform:scaleX(.65);transform-origin:left}
+  50%{transform:scaleX(1)}
+}
+
+/* Scene */
+.visual{
+  position:relative;height:min(72vh,720px);min-height:590px;
+  overflow:visible
+}
+.scene{
+  position:absolute;inset:0;
+  overflow:hidden;
+  background:var(--stage-bg)
+}
+.scene:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 56% 42%,rgba(0,0,0,.018),transparent 45%);
+}
+
+/* Orbit */
+.orbit{
+  position:absolute;left:57%;top:50%;
+  width:510px;height:510px;
+  margin:-255px;
+  border:1.5px solid var(--stage-line);border-radius:50%;
+  transition:opacity .35s ease
+}
+.orbit:before{
+  content:"";position:absolute;left:50%;top:50%;
+  width:330px;height:330px;margin:-165px;
+  border:1px solid var(--stage-line);border-radius:50%
+}
+
+/* Center logo object */
+.center{
+  position:absolute;left:57%;top:50%;
+  width:130px;height:130px;margin:-65px;
+  border-radius:50%;
+  background:var(--stage-fg);color:var(--stage-bg);
+  display:flex;align-items:center;justify-content:center;
+  z-index:12;will-change:transform,opacity
+}
+.center .sici-mark{font-size:34px;color:var(--stage-bg)}
+
+/* passive orbs */
+.orb{
+  position:absolute;left:57%;top:50%;
+  width:94px;height:94px;margin:-47px;
+  border-radius:50%;
+  border:2px solid var(--orb-border);
+  background:var(--orb-bg);color:var(--orb-fg);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:11px;
+  z-index:8;
+  cursor:pointer;
+  will-change:transform,opacity,width,height,margin;
+  transition:
+    width .58s var(--ease),
+    height .58s var(--ease),
+    margin .58s var(--ease),
+    background .38s ease,
+    color .38s ease,
+    box-shadow .38s ease,
+    opacity .3s ease,
+    transform .18s ease
+}
+.orb:hover:not(.focus){box-shadow:0 8px 24px rgba(10,15,25,.07)}
+.orb:focus-visible{outline:3px solid rgba(47,107,255,.28);outline-offset:5px}
+.orb .short{
+  display:flex;flex-direction:column;gap:5px;align-items:center;
+  font-size:13px;line-height:1.05;font-weight:500;letter-spacing:.045em;
+  text-transform:uppercase
+}
+.orb .short b{
+  font-size:9px;line-height:1;font-weight:600;letter-spacing:.08em;opacity:.48
+}
+.orb .full{display:none}
+
+/* selected orb */
+.orb.focus{
+  width:350px;height:350px;margin:-175px;
+  border:0;
+  background:var(--focus-bg);
+  color:var(--focus-fg);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 38px var(--focus-glow),
+    0 20px 46px rgba(0,0,0,.18);
+  z-index:30
+}
+.orb.focus .short{display:none}
+.orb.focus .full{
+  position:relative;
+  display:flex;height:100%;width:100%;
+  flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;
+  padding:44px 40px 42px
+}
+.orb-num{
+  position:static;
+  font-size:12px;font-weight:600;letter-spacing:.09em;
+  opacity:.72;margin-bottom:16px
+}
+.orb-title{
+  font-size:clamp(33px,2.7vw,40px);
+  line-height:1.01;letter-spacing:-.052em;font-weight:700;
+  max-width:265px
+}
+.orb-copy{
+  margin-top:17px;max-width:245px;
+  font-size:13.5px;line-height:1.46;font-weight:500;
+  color:rgba(8,9,11,.74)
+}
+.orb-action{
+  margin-top:21px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 11px;border-radius:999px;
+  background:rgba(8,9,11,.06);
+  border:1px solid rgba(8,9,11,.12);
+  font-size:10px;font-weight:700;color:#08090B
+}
+
+/* camera passing state */
+.orb.passing{
+  opacity:.07!important;
+}
+
+/* final reveal */
+.reveal{
+  position:absolute;inset:0;z-index:3;background:#0B0D12;color:#fff;
+  opacity:0;display:flex;align-items:center;justify-content:center;
+  transition:opacity .45s ease
+}
+.reveal.show{opacity:1}
+.reveal-copy{
+  width:min(74%,760px);text-align:center;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .55s var(--ease),transform .55s var(--ease)
+}
+.reveal.text .reveal-copy{opacity:1;transform:none}
+.reveal h3{
+  font-size:clamp(58px,6.4vw,92px);line-height:.91;letter-spacing:-.067em;font-weight:800
+}
+.reveal p{
+  margin:18px auto 0;max-width:520px;
+  color:#BCC1C8;font-size:15px;line-height:1.5
+}
+
+/* Jump */
+.jump{
+  position:absolute;left:52%;bottom:4px;transform:translateX(-50%);
+  z-index:70;display:flex;gap:5px;padding:5px 7px;
+  background:rgba(255,255,255,.94);border:1px solid #e4e7eb;border-radius:999px;
+  transition:opacity .3s ease
+}
+.jump.hide{opacity:0;pointer-events:none}
+.jump button{
+  width:29px;height:29px;border:0;border-radius:50%;
+  background:transparent;color:var(--stage-muted);font-size:9px;font-weight:800;cursor:pointer
+}
+.jump button.active{background:var(--stage-fg);color:#fff}
+
+/* Lower */
+.about{padding:145px 0 120px;background:#FCFCFB}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px}
+.about .sici-mark{font-size:clamp(90px,10vw,155px)}
+.about h2{
+  margin-top:34px;font-size:clamp(40px,4.9vw,70px);
+  line-height:.97;letter-spacing:-.062em
+}
+.about-copy{padding-top:45px}
+.about-copy p{font-size:17px}.about-copy p+p{margin-top:18px}
+.founders{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  border-top:1px solid #e7e9ed;margin-top:34px;padding-top:20px
+}
+.founder b{font-size:17px}
+.founder span{display:block;margin-top:6px;font-size:11px;line-height:1.45;color:#7e8794}
+.final{background:var(--stage-fg);color:#fff;padding:110px 0}
+.final-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.final h2{font-size:clamp(56px,7vw,98px);line-height:.94;letter-spacing:-.067em}
+.final a{padding:14px 18px;border-radius:999px;background:#FCFCFB;color:#050608;font-size:12px;font-weight:800}
+
+
+/* Practice content placement */
+.practice-extra{display:none;margin-top:23px;max-width:560px}
+.practice-extra.show{display:block}
+.practice-caps{
+  font-size:11px;line-height:1.55;font-weight:700;
+  color:var(--stage-muted);letter-spacing:.015em
+}
+.practice-links{display:flex;align-items:center;gap:18px;margin-top:15px}
+.practice-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:800;color:var(--stage-fg)
+}
+.secondary-practice-link{display:none;color:var(--stage-muted)}
+.secondary-practice-link.show{display:inline-flex}
+
+/* How SICI Works */
+.how-story{height:240vh;position:relative;background:#08090B;color:#fff}
+.how-stage{
+  position:sticky;top:0;height:100vh;display:flex;align-items:center;
+  overflow:hidden;background:#08090B
+}
+.how-shell{padding-top:78px}
+.how-kicker{
+  margin-bottom:22px;font-size:12px;font-weight:800;
+  letter-spacing:.03em;color:#AAB1BC
+}
+.how-track{
+  height:min(66vh,660px);min-height:500px;
+  display:flex;border:1px solid #343840;border-right:0;
+  overflow:hidden;background:#08090B
+}
+.how-step{
+  min-width:78px;display:flex;flex:0 0 78px;
+  border-right:1px solid #343840;
+  transition:flex-basis .68s var(--ease),flex-grow .68s var(--ease);
+  overflow:hidden
+}
+.how-step.active{flex:1 1 auto}
+.how-tab{
+  width:78px;flex:0 0 78px;border:0;background:#08090B;color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:18px 0;cursor:pointer
+}
+.how-tab:hover{background:#111318}
+.how-num{font-size:10px;font-weight:700;letter-spacing:.09em;color:#8E96A2}
+.how-vertical{
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:18px;font-weight:700;letter-spacing:-.025em;
+  white-space:nowrap
+}
+.how-panel{
+  width:0;opacity:0;overflow:hidden;background:#fff;color:#08090B;
+  transition:width .68s var(--ease),opacity .24s ease;
+  pointer-events:none
+}
+.how-step.active .how-panel{width:100%;opacity:1;pointer-events:auto}
+.how-panel-inner{
+  width:min(720px,calc(100vw - 470px));height:100%;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:52px 58px
+}
+.how-panel-num{
+  font-size:11px;font-weight:800;letter-spacing:.1em;color:#7E8795;margin-bottom:18px
+}
+.how-panel h2{
+  max-width:610px;font-size:clamp(50px,5vw,82px);
+  line-height:.94;letter-spacing:-.065em
+}
+.how-panel p{
+  max-width:590px;margin-top:25px;font-size:clamp(16px,1.35vw,20px);
+  line-height:1.52;font-weight:550;color:#555E6A
+}
+.how-position{
+  display:flex;justify-content:space-between;gap:20px;margin-top:16px;
+  color:#8E96A2;font-size:10px;font-weight:700
+}
+
+/* Selected Work */
+.work{
+  padding:155px 0 165px;
+  background:#FCFCFB;
+  color:#08090B;
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif
+}
+.work-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:56px;
+  margin-bottom:76px
+}
+.work-head h2{
+  font-size:clamp(78px,9.4vw,136px);
+  line-height:.84;
+  letter-spacing:-.078em;
+  font-weight:800
+}
+.work-head p{
+  max-width:340px;
+  padding-bottom:9px;
+  font-size:13px;
+  line-height:1.5;
+  font-weight:600;
+  color:#7E8795
+}
+.work-list{border-top:1px solid #BFC4CB}
+.work-item{
+  border-bottom:1px solid #BFC4CB;
+  transition:background .25s ease
+}
+.work-item:hover{background:#F6F6F4}
+.work-item.open{background:#F8F8F6}
+.work-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:62px minmax(0,1fr) 170px 190px;
+  align-items:center;
+  gap:22px;
+  padding:32px 0 31px;
+  border:0;
+  background:transparent;
+  color:#08090B;
+  text-align:left;
+  cursor:pointer;
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif
+}
+.work-no{
+  align-self:start;
+  padding-top:8px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:#8A929D
+}
+.work-title-group{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0
+}
+.work-name{
+  font-size:clamp(34px,3.5vw,54px);
+  line-height:.95;
+  font-weight:800;
+  letter-spacing:-.058em
+}
+.work-subtitle{
+  max-width:820px;
+  font-size:14px;
+  line-height:1.46;
+  font-weight:550;
+  color:#68717D
+}
+.work-type{
+  font-size:10px;
+  line-height:1.35;
+  font-weight:750;
+  color:#7E8795;
+  text-align:right
+}
+.work-expand{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  white-space:nowrap;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.02em;
+  color:#08090B
+}
+.work-expand-label{
+  position:relative
+}
+.work-expand-label:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:100%;
+  height:1px;
+  background:#08090B;
+  transform:scaleX(.26);
+  transform-origin:left;
+  transition:transform .34s var(--ease)
+}
+.work-expand-icon{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border:1px solid #08090B;
+  border-radius:50%;
+  font-size:17px;
+  line-height:1;
+  transition:transform .42s var(--ease),background .24s ease,color .24s ease
+}
+.work-row:hover .work-expand-label:after{transform:scaleX(1)}
+.work-row:hover .work-expand-icon{
+  transform:translate(3px,3px);
+  background:#08090B;
+  color:#fff
+}
+.work-item.open .work-expand-icon{
+  transform:rotate(180deg);
+  background:#08090B;
+  color:#fff
+}
+.work-detail{
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  transition:grid-template-rows .58s var(--ease),opacity .28s ease
+}
+.work-detail>*{overflow:hidden}
+.work-item.open .work-detail{
+  grid-template-rows:1fr;
+  opacity:1
+}
+.work-detail-grid{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:78px;
+  padding:4px 0 58px 84px;
+  align-items:stretch
+}
+.work-copy{padding:32px 0 20px}
+.work-copy p{
+  margin-top:0;
+  font-size:16px;
+  line-height:1.62;
+  font-weight:500;
+  color:#535D69;
+  max-width:560px
+}
+.work-copy a{
+  display:inline-block;
+  margin-top:27px;
+  font-size:12px;
+  font-weight:800
+}
+.work-copy a[aria-disabled="true"]{
+  opacity:.42;
+  pointer-events:none
+}
+.work-visual{
+  min-height:350px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:32px;
+  background:#0B0D12;
+  color:#fff;
+  overflow:hidden;
+  position:relative
+}
+.work-visual strong{
+  font-size:clamp(44px,5vw,76px);
+  line-height:.9;
+  letter-spacing:-.07em
+}
+.work-visual span{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.04em;
+  opacity:.58
+}
+.work-visual.has-image{
+  padding:0;
+  background:#fff;
+  color:#08090B;
+  border:1px solid #D6D9DE
+}
+.work-image{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:350px;
+  object-fit:cover;
+  object-position:center;
+}
+.work-image.contain{
+  object-fit:contain;
+  background:#fff;
+}
+.work-visual-grantise:after{
+  content:"";
+  position:absolute;
+  width:64%;
+  height:54%;
+  right:-5%;
+  bottom:-7%;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:18px;
+  box-shadow:-18px -18px 0 rgba(255,255,255,.08)
+}
+.work-visual-radar strong{max-width:430px}
+.work-visual-radar:before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%;
+  right:35px;
+  top:50%;
+  transform:translateY(-50%)
+}
+.work-visual-eventise:after{
+  content:"";
+  position:absolute;
+  right:34px;
+  bottom:34px;
+  width:42%;
+  height:48%;
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:14px
+}
+.work-visual-research{
+  background:#F0F1F3;
+  color:#08090B;
+  border:1px solid #D6D9DE
+}
+.work-visual-map{
+  background:#fff;
+  color:#08090B;
+  border:1px solid #D6D9DE
+}
+.mapping-grid{
+  position:absolute;
+  inset:30px;
+  background-image:radial-gradient(#08090B 1.25px,transparent 1.25px);
+  background-size:22px 22px;
+  opacity:.18
+}
+
+/* About refinements */
+.about-copy p{font-size:17px;line-height:1.62;color:#3F4752}
+.about-copy p+p{margin-top:22px}
+
+/* Final CTA */
+.final-copy p{
+  max-width:620px;margin-top:25px;color:#B8BEC7;
+  font-size:17px;line-height:1.55
+}
+.final-actions{
+  display:flex;flex-direction:column;align-items:flex-end;gap:18px
+}
+.final .final-contact{
+  padding:14px 18px;border-radius:999px;background:#FCFCFB;
+  color:#050608;font-size:12px;font-weight:800
+}
+.final .dev-link{
+  padding:0;background:transparent;color:#B8BEC7;
+  font-size:11px;font-weight:700
+}
+
+.mobile{display:none}
+
+/* ---------------------------------------------------------------
+   Responsive merge
+   Desktop experience: >1000px
+   Approved mobile/tablet experience: <=1000px
+   --------------------------------------------------------------- */
+@media(max-width:1000px){
+  .nav{display:none}
+  .story,.how-story,.work{display:none!important}
+  .mobile{display:block;padding:0;background:#FCFCFB}
+  .shell{width:min(calc(100% - 34px),760px)}
+
+  .header{
+    top:max(10px,env(safe-area-inset-top));
+    width:min(calc(100vw - 20px),740px);
+    padding:9px 11px 9px 16px;
+  }
+  .header .sici-mark{font-size:21px}
+  .contact-btn{font-size:10px;padding:9px 13px}
+
+  .m-shell{width:min(calc(100% - 30px),680px);margin:0 auto}
+
+  /* Hero */
+  .m-hero{
+    min-height:100svh;
+    padding:94px 0 30px;
+    display:flex;
+    align-items:stretch;
+    background:#FCFCFB;
+  }
+  .m-hero-inner{display:flex;flex-direction:column;width:100%}
+  .m-eyebrow{
+    font-size:10px;font-weight:800;color:#7E8795;letter-spacing:.035em
+  }
+  .m-hero h1{
+    margin:16px 0 0;
+    font-size:clamp(42px,8.2vw,66px);
+    line-height:.91;
+    letter-spacing:-.068em;
+    font-weight:800;
+  }
+  .m-hero h1 span{display:block;white-space:nowrap}
+  .m-summary{
+    max-width:520px;
+    margin:19px 0 0;
+    font-size:13.5px;
+    line-height:1.52;
+    font-weight:550;
+    color:#59626E;
+  }
+  .m-mobile-orbit{
+    position:relative;
+    width:min(60vw,390px);
+    aspect-ratio:1;
+    margin:36px auto 25px;
+  }
+  .m-orbit-ring,
+  .m-orbit-ring:after{
+    position:absolute;
+    inset:8%;
+    content:"";
+    border-radius:50%;
+    border:1px solid #D9DDE2;
+  }
+  .m-orbit-ring:after{inset:20%;opacity:.75}
+  .m-center-mark{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#08090B;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    font-weight:800;
+    letter-spacing:-.07em;
+  }
+  .m-center-mark .sici-star{width:18px;height:18px;margin-left:1px}
+  .m-orbit-chip{
+    position:absolute;
+    width:66px;
+    height:66px;
+    border-radius:50%;
+    background:#FCFCFB;
+    border:1px solid #08090B;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:7px;
+    font-size:7px;
+    line-height:1.16;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.025em;
+    transform:translate(-50%,-50%);
+  }
+  .m-orbit-chip b{
+    display:block;
+    font-size:7px;
+    color:#7E8795;
+    margin-bottom:2px;
+  }
+  .m-scroll-hint{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    font-size:9px;
+    font-weight:800;
+    color:#9299A2;
+  }
+  .m-scroll-hint i{
+    display:block;
+    flex:1;
+    max-width:120px;
+    height:1px;
+    background:#C8CDD3;
+  }
+
+  /* Practices */
+  .m-practices{
+    position:relative;
+    height:520svh;
+    background:#08090B;
+    color:#fff;
+    padding:0;
+    overflow:visible;
+  }
+  .m-practices>.m-shell{
+    position:sticky;
+    top:0;
+    height:100svh;
+    padding-top:max(72px,calc(env(safe-area-inset-top) + 62px));
+    padding-bottom:max(10px,env(safe-area-inset-bottom));
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .m-practices-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex:0 0 auto;
+    margin-bottom:8px;
+  }
+  .m-practices-head span{
+    font-size:10px;
+    font-weight:800;
+    color:#969DA7;
+  }
+  .m-practice-counter{font-variant-numeric:tabular-nums}
+  .m-practice-stage{
+    position:relative;
+    flex:1 1 auto;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    width:100%;
+  }
+  .m-practice-orbit{
+    position:relative;
+    width:min(46vw,320px);
+    height:min(46vw,320px);
+    flex:0 0 auto;
+    margin:8px auto 0;
+    overflow:visible;
+  }
+  .m-practice-orbit:before,
+  .m-practice-orbit:after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    border-radius:50%;
+    border:1px solid #343840;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .m-practice-orbit:before{width:88%;height:88%}
+  .m-practice-orbit:after{width:58%;height:58%}
+  .m-practice-dot{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:44px;
+    height:44px;
+    padding:0;
+    border:1px solid #606771;
+    border-radius:50%;
+    background:#101217;
+    color:#fff;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    transform:translate(-50%,-50%);
+    transition:
+      left .55s var(--ease),
+      top .55s var(--ease),
+      width .55s var(--ease),
+      height .55s var(--ease),
+      background .35s ease,
+      color .35s ease,
+      border-color .35s ease,
+      box-shadow .4s ease;
+    z-index:2;
+  }
+  .m-practice-dot.active{
+    left:50%!important;
+    top:50%!important;
+    width:min(34vw,220px);
+    height:min(34vw,220px);
+    transform:translate(-50%,-50%)!important;
+    background:#fff;
+    color:#08090B;
+    border-color:#fff;
+    box-shadow:0 0 30px rgba(255,255,255,.15);
+    z-index:8;
+    padding:22px;
+  }
+  .m-dot-short{display:block;font-size:8px;font-weight:800}
+  .m-dot-full{display:none}
+  .m-practice-dot.active .m-dot-short{display:none}
+  .m-practice-dot.active .m-dot-full{display:block}
+  .m-num{font-size:9px;color:#7B838E;font-weight:800}
+  .m-dot-full h2{
+    margin:9px auto 0;
+    max-width:180px;
+    font-size:clamp(22px,4.3vw,30px);
+    line-height:.95;
+    letter-spacing:-.055em;
+    font-weight:700;
+  }
+  .m-practice-copy{
+    width:min(100%,590px);
+    margin:16px auto 0;
+    padding:0 7px;
+    flex:0 0 auto;
+    align-self:center;
+  }
+  .m-practice-copy h3{
+    margin:0;
+    font-size:clamp(31px,5.5vw,43px);
+    line-height:.94;
+    letter-spacing:-.06em;
+  }
+  .m-practice-copy p{
+    margin:11px 0 0;
+    font-size:13px;
+    line-height:1.52;
+    color:#B7BDC6;
+    font-weight:550;
+  }
+  .m-practice-caps{
+    margin-top:10px;
+    font-size:9px;
+    line-height:1.48;
+    font-weight:750;
+    color:#878F9A;
+  }
+  .m-practice-actions{
+    min-height:22px;
+    margin-top:10px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  .m-practice-actions a{font-size:10px;font-weight:800;color:#fff}
+  .m-practice-actions .secondary{color:#9EA6B0}
+  .m-practice-nav{
+    width:100%;
+    margin:14px auto 0;
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    flex:0 0 auto;
+  }
+  .m-practice-nav button{
+    position:relative;
+    z-index:12;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid #3E434B;
+    background:#08090B;
+    color:#969DA7;
+    font-size:8px;
+    font-weight:800;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .m-practice-nav button.active{
+    background:#fff;
+    color:#08090B;
+    border-color:#fff;
+  }
+  .m-swipe-note{
+    margin-top:6px;
+    text-align:center;
+    font-size:8px;
+    font-weight:700;
+    color:#6E7680;
+    flex:0 0 auto;
+  }
+
+  /* How */
+  .m-how{background:#08090B;color:#fff;padding:88px 0 100px}
+  .m-how-head{margin-bottom:36px}
+  .m-how-head h2{
+    margin:0;
+    max-width:520px;
+    font-size:clamp(54px,9vw,78px);
+    line-height:.88;
+    letter-spacing:-.072em;
+    font-weight:800;
+  }
+  .m-how-list{border-top:1px solid #343840}
+  .m-how-item{border-bottom:1px solid #343840}
+  .m-how-row{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#fff;
+    display:grid;
+    grid-template-columns:34px 1fr 28px;
+    gap:12px;
+    align-items:center;
+    text-align:left;
+    padding:22px 0;
+    cursor:pointer;
+  }
+  .m-how-no{font-size:9px;font-weight:800;color:#717985}
+  .m-how-name{
+    font-size:clamp(28px,5vw,38px);
+    line-height:1;
+    font-weight:800;
+    letter-spacing:-.05em;
+  }
+  .m-how-arrow{
+    font-size:18px;
+    text-align:right;
+    transition:transform .35s var(--ease);
+  }
+  .m-how-body{
+    display:grid;
+    grid-template-rows:0fr;
+    opacity:0;
+    transition:grid-template-rows .48s var(--ease),opacity .25s ease;
+  }
+  .m-how-body>div{overflow:hidden}
+  .m-how-item.open .m-how-body{grid-template-rows:1fr;opacity:1}
+  .m-how-item.open .m-how-row{
+    background:#fff;
+    color:#08090B;
+    padding-left:14px;
+    padding-right:14px;
+  }
+  .m-how-item.open .m-how-arrow{transform:rotate(180deg)}
+  .m-how-copy{
+    background:#fff;
+    color:#08090B;
+    padding:0 14px 27px 60px;
+  }
+  .m-how-copy h3{
+    margin:0;
+    font-size:clamp(30px,5.2vw,40px);
+    line-height:1;
+    letter-spacing:-.055em;
+  }
+  .m-how-copy p{
+    margin:14px 0 0;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#59626E;
+  }
+
+  /* Selected Work */
+  .m-work{background:#FCFCFB;padding:98px 0 108px}
+  .m-work-head h2{
+    margin:0;
+    font-size:clamp(62px,10vw,92px);
+    line-height:.86;
+    letter-spacing:-.075em;
+  }
+  .m-work-head p{margin:18px 0 48px;font-size:12px;color:#7D8590}
+  .m-work-list{border-top:1px solid #BCC1C8}
+  .m-work-item{border-bottom:1px solid #BCC1C8}
+  .m-work-row{
+    width:100%;
+    border:0;
+    background:transparent;
+    text-align:left;
+    padding:23px 0;
+    display:grid;
+    grid-template-columns:34px 1fr 36px;
+    gap:12px;
+    align-items:start;
+    color:#08090B;
+    cursor:pointer;
+  }
+  .m-work-no{padding-top:5px;font-size:9px;font-weight:800;color:#8C949F}
+  .m-work-name{
+    display:block;
+    font-size:clamp(28px,5vw,38px);
+    line-height:.98;
+    font-weight:800;
+    letter-spacing:-.05em;
+  }
+  .m-work-sub{
+    display:block;
+    margin-top:7px;
+    font-size:11px;
+    line-height:1.45;
+    color:#6C7580;
+  }
+  .m-expand{
+    width:32px;
+    height:32px;
+    border:1px solid #08090B;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:15px;
+    transition:.35s var(--ease);
+  }
+  .m-work-item.open .m-expand{
+    background:#08090B;
+    color:#fff;
+    transform:rotate(180deg);
+  }
+  .m-expand-label{
+    grid-column:2 / 4;
+    margin-top:2px;
+    font-size:9px;
+    font-weight:800;
+    color:#8C949F;
+  }
+  .m-work-detail{
+    display:grid;
+    grid-template-rows:0fr;
+    opacity:0;
+    transition:grid-template-rows .5s var(--ease),opacity .25s ease;
+  }
+  .m-work-detail>div{overflow:hidden}
+  .m-work-item.open .m-work-detail{grid-template-rows:1fr;opacity:1}
+  .m-work-content{padding:0 0 30px 46px}
+  .m-work-content p{
+    margin:0;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#565F6B;
+  }
+  .m-work-content a{
+    display:inline-block;
+    margin-top:17px;
+    font-size:11px;
+    font-weight:800;
+  }
+  .m-work-visual{
+    margin-top:22px;
+    min-height:250px;
+    background:#0B0D12;
+    color:#fff;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    position:relative;
+  }
+  .m-work-visual strong{
+    font-size:clamp(44px,8vw,66px);
+    line-height:.9;
+    letter-spacing:-.065em;
+  }
+  .m-work-visual span{font-size:9px;font-weight:750;opacity:.6}
+  .m-work-visual.light{
+    background:#F0F1F3;
+    color:#08090B;
+    border:1px solid #D6D9DE;
+  }
+.m-work-visual.has-image{
+    padding:0;
+    background:#fff;
+    border:1px solid #D6D9DE;
+  }
+  .m-work-image{
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:230px;
+    object-fit:cover;
+    object-position:center;
+  }
+  .m-work-image.contain{
+    object-fit:contain;
+    background:#fff;
+  }
+
+  /* Shared About / CTA at tablet/mobile sizes */
+  .about{padding:96px 0 100px}
+  .about-grid{grid-template-columns:1fr;gap:38px}
+  .about-copy{padding-top:0}
+  .about .sici-mark{font-size:82px}
+  .about h2{
+    max-width:650px;
+    font-size:clamp(46px,8vw,66px);
+    line-height:.94;
+  }
+  .about-copy p{
+    max-width:650px;
+    font-size:15px;
+    line-height:1.62;
+  }
+  .final{padding:96px 0 max(100px,calc(70px + env(safe-area-inset-bottom)))}
+  .final-grid{grid-template-columns:1fr;gap:34px}
+  .final h2{
+    max-width:690px;
+    font-size:clamp(54px,9vw,76px);
+    line-height:.9;
+  }
+  .final-copy p{font-size:14px}
+  .final-actions{align-items:flex-start}
+}
+
+/* Phone refinement */
+@media(max-width:700px){
+  .shell{width:min(calc(100% - 30px),520px)}
+  .header{width:calc(100vw - 20px)}
+  .m-shell{width:min(calc(100% - 30px),520px)}
+
+  .m-hero{
+    min-height:100svh;
+    padding:92px 0 30px;
+  }
+  .m-eyebrow{font-size:9px}
+  .m-hero h1{
+    margin-top:15px;
+    font-size:clamp(34px,10.2vw,46px);
+  }
+  .m-summary{
+    margin-top:18px;
+    font-size:12.5px;
+    line-height:1.5;
+  }
+  .m-mobile-orbit{
+    width:min(76vw,310px);
+    margin:34px auto 24px;
+  }
+  .m-center-mark{
+    width:92px;height:92px;
+    font-size:27px;
+  }
+  .m-orbit-chip{
+    width:62px;height:62px;
+  }
+
+  .m-practice-orbit{
+    width:min(70vw,280px);
+    height:min(70vw,280px);
+  }
+  .m-practice-dot{width:42px;height:42px}
+  .m-practice-dot.active{
+    width:min(50vw,200px);
+    height:min(50vw,200px);
+  }
+  .m-dot-full h2{
+    max-width:170px;
+    font-size:clamp(21px,6vw,28px);
+  }
+  .m-practice-copy{width:min(100%,430px)}
+  .m-practice-copy h3{font-size:clamp(28px,7.8vw,38px)}
+  .m-practice-copy p{font-size:clamp(11px,2.95vw,12.5px)}
+  .m-how-head h2{font-size:clamp(50px,14vw,68px)}
+  .m-how-name{font-size:28px}
+  .m-how-copy h3{font-size:30px}
+  .m-how-copy p{font-size:14px}
+  .m-work-head h2{font-size:clamp(56px,16vw,76px)}
+  .m-work-name{font-size:27px}
+  .m-work-content p{font-size:14px}
+  .m-work-visual{min-height:230px}
+
+  .about .sici-mark{font-size:78px}
+  .about h2{font-size:42px}
+  .final h2{font-size:52px}
+}
+
+/* Short phones */
+@media(max-width:700px) and (max-height:720px){
+  .m-practices>.m-shell{
+    padding-top:max(66px,calc(env(safe-area-inset-top) + 56px));
+    padding-bottom:max(6px,env(safe-area-inset-bottom));
+  }
+  .m-practice-orbit{
+    width:min(62vw,220px);
+    height:min(62vw,220px);
+    margin-top:4px;
+  }
+  .m-practice-dot.active{
+    width:min(44vw,168px);
+    height:min(44vw,168px);
+    padding:17px;
+  }
+  .m-dot-full h2{
+    max-width:145px;
+    font-size:clamp(18px,5.3vw,24px);
+  }
+  .m-practice-copy{margin-top:10px}
+  .m-practice-copy h3{font-size:clamp(25px,7vw,33px)}
+  .m-practice-copy p{
+    margin-top:8px;
+    font-size:10.5px;
+    line-height:1.42;
+  }
+  .m-practice-caps{
+    margin-top:7px;
+    font-size:7.7px;
+    line-height:1.4;
+  }
+  .m-practice-actions{margin-top:7px;min-height:20px}
+  .m-practice-nav{margin-top:9px}
+  .m-swipe-note{margin-top:4px;font-size:7.5px}
+}
+
+.mobile-menu-btn,.mobile-menu{display:none}
+@media(max-width:1000px){
+  .contact-btn{display:none!important}
+  .mobile-menu-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:34px;
+    padding:0 14px;
+    border:0;
+    border-radius:999px;
+    background:#08090B;
+    color:#fff;
+    font:800 10px/1 "Plus Jakarta Sans",system-ui,sans-serif;
+    cursor:pointer;
+    position:relative;
+    z-index:101;
+  }
+  .header.invert .mobile-menu-btn{background:#fff;color:#08090B}
+  .mobile-menu{
+    display:block;
+    position:fixed;
+    inset:0;
+    z-index:95;
+    background:#08090B;
+    color:#fff;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .28s ease,visibility .28s ease;
+  }
+  .mobile-menu.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .mobile-menu-inner{
+    min-height:100svh;
+    width:min(calc(100% - 34px),680px);
+    margin:0 auto;
+    padding:max(110px,calc(env(safe-area-inset-top) + 94px)) 0 54px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+  }
+  .mobile-menu-inner a{
+    display:block;
+    padding:15px 0;
+    border-bottom:1px solid #31343A;
+    font-size:clamp(38px,10vw,62px);
+    line-height:.95;
+    font-weight:800;
+    letter-spacing:-.06em;
+  }
+  body.menu-open{overflow:hidden}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+
+/* SICI opening ident — homepage only */
+.site-intro{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:grid;
+  place-items:center;
+  background:#08090B;
+  color:#FCFCFB;
+  opacity:1;
+  visibility:visible;
+}
+.site-intro.finished{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .34s ease,visibility .34s linear;
+}
+.site-intro-lockup{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transform:translateY(4px);
+}
+.site-intro-orb{
+  width:132px;
+  height:132px;
+  border-radius:50%;
+  background:#FCFCFB;
+  display:grid;
+  place-items:center;
+  transform:scale(.08);
+  opacity:0;
+}
+.site-intro-logo{
+  display:inline-flex;
+  align-items:flex-start;
+  gap:.045em;
+  color:#08090B;
+  font-size:42px;
+  line-height:.84;
+  font-weight:800;
+  letter-spacing:-.085em;
+  opacity:0;
+}
+.site-intro-logo .sici-star{
+  width:.60em;
+  height:.60em;
+  margin-top:-.05em;
+}
+.site-intro-name{
+  margin-top:28px;
+  max-width:min(84vw,680px);
+  color:#FCFCFB;
+  font-size:clamp(18px,2.2vw,28px);
+  line-height:1.18;
+  font-weight:700;
+  letter-spacing:-.03em;
+  opacity:0;
+  transform:translateY(7px);
+}
+.site-intro.playing .site-intro-orb{
+  animation:siteIntroOrb .48s cubic-bezier(.22,.72,.18,1) .08s forwards;
+}
+.site-intro.playing .site-intro-logo{
+  animation:siteIntroLogo .34s ease .44s forwards;
+}
+.site-intro.playing .site-intro-name{
+  animation:siteIntroName .42s ease .72s forwards;
+}
+.site-intro.playing .site-intro-lockup{
+  animation:siteIntroOut .38s ease 2.62s forwards;
+}
+@keyframes siteIntroOrb{
+  0%{transform:scale(.08);opacity:0}
+  55%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+@keyframes siteIntroLogo{
+  from{opacity:0;transform:scale(.94)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes siteIntroName{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes siteIntroOut{
+  from{opacity:1;transform:translateY(4px) scale(1)}
+  to{opacity:0;transform:translateY(4px) scale(.97)}
+}
+body.intro-active{overflow:hidden}
+@media(max-width:600px){
+  .site-intro-orb{width:116px;height:116px}
+  .site-intro-logo{font-size:36px}
+  .site-intro-name{
+    margin-top:24px;
+    max-width:310px;
+    font-size:17px;
+    line-height:1.24;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .site-intro.playing .site-intro-orb,
+  .site-intro.playing .site-intro-logo,
+  .site-intro.playing .site-intro-name,
+  .site-intro.playing .site-intro-lockup{
+    animation:none;
+  }
+  .site-intro-orb,
+  .site-intro-logo,
+  .site-intro-name{
+    opacity:1;
+    transform:none;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="site-intro" id="siteIntro" aria-hidden="true">
+  <div class="site-intro-lockup">
+    <div class="site-intro-orb">
+      <div class="site-intro-logo">SICI<span class="sici-star"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="currentColor">
+  <rect x="17" y="1" width="6" height="19" rx="3"/>
+  <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+  <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/>
+  <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+  <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/>
+  <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+</g></svg></span></div>
+    </div>
+    <div class="site-intro-name">Social Institute of Change and Impact</div>
+  </div>
+</div>
+
+
+<script>
+
+/* Homepage opening ident: once per browser session */
+(()=>{
+  const intro=document.querySelector('#siteIntro');
+  if(!intro)return;
+
+  const KEY='sici-intro-seen-v1';
+  let seen=false;
+  try{seen=sessionStorage.getItem(KEY)==='1'}catch(e){}
+
+  if(seen){
+    intro.remove();
+    return;
+  }
+
+  document.body.classList.add('intro-active');
+
+  const finish=()=>{
+    intro.classList.add('finished');
+    document.body.classList.remove('intro-active');
+    try{sessionStorage.setItem(KEY,'1')}catch(e){}
+    setTimeout(()=>intro.remove(),420);
+  };
+
+  requestAnimationFrame(()=>{
+    intro.classList.add('playing');
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(finish,reduced?1200:3050);
+  });
+})();
+
+</script>
+
+<header class="header">
+  <a href="#top">
+    <span class="sici-mark">SICI
+      <span class="sici-star"><svg viewBox="0 0 40 40"><g fill="currentColor">
+        <rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+        <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+        <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+      </g></svg></span>
+    </span>
+  </a>
+  <nav class="nav"><a href="#work">Work</a><a href="about.html">About</a><a href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a></nav>
+  <a class="contact-btn" href="contact.html">Contact</a>
+  
+<button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <a href="index.html#top">Home</a>
+    <a href="index.html#m-work" data-desktop-href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+</header>
+
+<main id="top">
+<section class="story" id="story">
+  <div class="stage">
+    <div class="stage-inner">
+
+      <aside class="copy">
+        <div class="eyebrow" id="eyebrow">Social Institute of Change and Impact</div>
+        <h1 class="title">
+          <span class="row"><span id="t1">From Ideas to Plans.</span></span>
+          <span class="row"><span id="t2">From Plans to Results.</span></span>
+        </h1>
+        <p class="summary" id="summary">SICI works on complex social and institutional problems through strategy, systems, knowledge and technology.</p>
+        <div class="practice-extra" id="practiceExtra" aria-live="polite">
+          <div class="practice-caps" id="practiceCaps"></div>
+          <div class="practice-links">
+            <a class="practice-link" id="practiceLink" href="#" hidden aria-hidden="true"></a>
+            <a class="practice-link secondary-practice-link" id="practiceSecondary" href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+          </div>
+        </div>
+        <div class="ctas" id="heroCtas">
+          <a class="primary" href="#story">See How We Work ↓</a>
+          <a class="secondary" href="contact.html">Contact SICI</a>
+        </div>
+        <div class="position">
+          <strong id="stepNo">00</strong>
+          <div class="progress"><i id="progressFill"></i></div>
+          <span id="stepText">Start</span>
+        </div>
+        <div class="scroll-cue" id="scrollCue">Scroll — Follow the Orbit</div>
+      </aside>
+
+      <section class="visual">
+        <div class="scene" id="scene">
+<div class="orbit" id="orbit"></div>
+
+          <div class="reveal" id="reveal">
+            <div class="reveal-copy">
+              <h3>How SICI Works</h3>
+            </div>
+          </div>
+
+          <div class="center" id="center">
+            <span class="sici-mark">SICI
+              <span class="sici-star"><svg viewBox="0 0 40 40"><g fill="currentColor">
+                <rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+                <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+                <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+              </g></svg></span>
+            </span>
+          </div>
+
+          <div class="orb" id="orb0" role="button" tabindex="0">
+            <div class="short"><b>01</b><span>Strategy</span></div>
+            <div class="full">
+              <span class="orb-num">01</span>
+              <div class="orb-title">Strategy &<br>Organisational<br>Change</div>
+            </div>
+          </div>
+
+          <div class="orb" id="orb1" role="button" tabindex="0">
+            <div class="short"><b>02</b><span>Funding</span></div>
+            <div class="full">
+              <span class="orb-num">02</span>
+              <div class="orb-title">Funding<br>Systems</div>
+            </div>
+          </div>
+
+          <div class="orb" id="orb2" role="button" tabindex="0">
+            <div class="short"><b>03</b><span>Campaigns</span></div>
+            <div class="full">
+              <span class="orb-num">03</span>
+              <div class="orb-title">Campaigns &<br>Public<br>Engagement</div>
+              
+            </div>
+          </div>
+
+          <div class="orb" id="orb3" role="button" tabindex="0">
+            <div class="short"><b>04</b><span>Digital & AI</span></div>
+            <div class="full">
+              <span class="orb-num">04</span>
+              <div class="orb-title">Digital Systems<br>& AI</div>
+              
+            </div>
+          </div>
+
+          <div class="orb" id="orb4" role="button" tabindex="0">
+            <div class="short"><b>05</b><span>Research</span></div>
+            <div class="full">
+              <span class="orb-num">05</span>
+              <div class="orb-title">Research &<br>Intelligence</div>
+              
+            </div>
+          </div>
+
+          <div class="jump" id="jump">
+            <button data-jump="1">01</button>
+            <button data-jump="2">02</button>
+            <button data-jump="3">03</button>
+            <button data-jump="4">04</button>
+            <button data-jump="5">05</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="how-story" id="how">
+  <div class="how-stage">
+    <div class="shell how-shell">
+      <div class="how-kicker">How SICI Works</div>
+
+      <div class="how-track" id="howTrack">
+        <article class="how-step active" data-how="0">
+          <button class="how-tab" type="button" aria-expanded="true">
+            <span class="how-num">01</span>
+            <span class="how-vertical">Understand</span>
+          </button>
+          <div class="how-panel">
+            <div class="how-panel-inner">
+              <span class="how-panel-num">01</span>
+              <h2>Understand the problem</h2>
+              <p>We look at the evidence, the people involved, the constraints and the wider context to understand what is actually happening.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step" data-how="1">
+          <button class="how-tab" type="button" aria-expanded="false">
+            <span class="how-num">02</span>
+            <span class="how-vertical">Define</span>
+          </button>
+          <div class="how-panel">
+            <div class="how-panel-inner">
+              <span class="how-panel-num">02</span>
+              <h2>Define the way forward</h2>
+              <p>We identify what needs to change, set the priorities and work out a practical direction.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step" data-how="2">
+          <button class="how-tab" type="button" aria-expanded="false">
+            <span class="how-num">03</span>
+            <span class="how-vertical">Build</span>
+          </button>
+          <div class="how-panel">
+            <div class="how-panel-inner">
+              <span class="how-panel-num">03</span>
+              <h2>Build what is needed</h2>
+              <p>That may be a strategy, a plan, a campaign, a research product, a digital tool or a working system.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="how-step" data-how="3">
+          <button class="how-tab" type="button" aria-expanded="false">
+            <span class="how-num">04</span>
+            <span class="how-vertical">Put it to work</span>
+          </button>
+          <div class="how-panel">
+            <div class="how-panel-inner">
+              <span class="how-panel-num">04</span>
+              <h2>Put it to work</h2>
+              <p>We deliver what the work requires: a clear plan, a working tool, implementation support or continued involvement as the work develops.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="how-position">
+        <span id="howPosition">01 / 04</span>
+        <span>Scroll, use arrow keys or select a stage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="shell">
+    <div class="work-head">
+      <h2>Selected Work</h2>
+      <p>Products, initiatives, client work and research.</p>
+    </div>
+
+    <div class="work-list" id="workList">
+
+      <article class="work-item">
+        <button class="work-row" type="button" aria-expanded="false">
+          <span class="work-no">01</span>
+          <span class="work-title-group">
+            <span class="work-name">Grantise</span>
+            <span class="work-subtitle">A funding intelligence and workflow system.</span>
+          </span>
+          <span class="work-type">Product</span>
+          <span class="work-expand">
+            <span class="work-expand-label">Click to expand</span>
+            <span class="work-expand-icon" aria-hidden="true">↘</span>
+          </span>
+        </button>
+        <div class="work-detail">
+          <div class="work-detail-grid">
+            <div class="work-copy">
+              <p>Grantise brings funding discovery, fit assessment and pipeline management into one system. It is being developed around a practical question: how can organisations find the right opportunities earlier and manage them consistently over time?</p>
+              <a href="https://grantise.com" target="_blank" rel="noopener">Explore Grantise →</a>
+            </div>
+            <div class="work-visual has-image">
+              <img class="work-image" src="assets/sici-work-grantise.webp" alt="Grantise funding opportunities interface" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-item">
+        <button class="work-row" type="button" aria-expanded="false">
+          <span class="work-no">02</span>
+          <span class="work-title-group">
+            <span class="work-name">Donor Mapping for 12 Organisations</span>
+            <span class="work-subtitle">Mapping relevant funding sources across 12 organisations.</span>
+          </span>
+          <span class="work-type">Client work</span>
+          <span class="work-expand">
+            <span class="work-expand-label">Click to expand</span>
+            <span class="work-expand-icon" aria-hidden="true">↘</span>
+          </span>
+        </button>
+        <div class="work-detail">
+          <div class="work-detail-grid">
+            <div class="work-copy">
+              <p>SICI researched and mapped potential donors against the priorities and profiles of 12 organisations, creating a clearer view of relevant funding sources and future opportunities.</p>
+            </div>
+            <div class="work-visual work-visual-map" aria-label="Donor mapping visual placeholder">
+              <div class="mapping-grid" aria-hidden="true"></div>
+              <span>Donor mapping</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-item">
+        <button class="work-row" type="button" aria-expanded="false">
+          <span class="work-no">03</span>
+          <span class="work-title-group">
+            <span class="work-name">COP31Radar</span>
+            <span class="work-subtitle">Research and intelligence for COP31.</span>
+          </span>
+          <span class="work-type">Independent initiative</span>
+          <span class="work-expand">
+            <span class="work-expand-label">Click to expand</span>
+            <span class="work-expand-icon" aria-hidden="true">↘</span>
+          </span>
+        </button>
+        <div class="work-detail">
+          <div class="work-detail-grid">
+            <div class="work-copy">
+              <p>COP31Radar follows the negotiations, actors and practical developments around COP31 and turns them into useful information for organisations preparing for Antalya. It combines regular research, analysis and on-the-ground context.</p>
+              <a href="https://cop31radar.com" target="_blank" rel="noopener">Explore COP31Radar →</a>
+            </div>
+            <div class="work-visual has-image">
+              <img class="work-image" src="assets/sici-work-cop31radar.webp" alt="COP31Radar Issue 09 briefing interface" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-item">
+        <button class="work-row" type="button" aria-expanded="false">
+          <span class="work-no">04</span>
+          <span class="work-title-group">
+            <span class="work-name">AI in the BIST 100</span>
+            <span class="work-subtitle">Research into how Türkiye’s largest listed companies are using and communicating AI.</span>
+          </span>
+          <span class="work-type">Research</span>
+          <span class="work-expand">
+            <span class="work-expand-label">Click to expand</span>
+            <span class="work-expand-icon" aria-hidden="true">↘</span>
+          </span>
+        </button>
+        <div class="work-detail">
+          <div class="work-detail-grid">
+            <div class="work-copy">
+              <p>SICI reviewed publicly available evidence of AI use across BIST 100 companies, looking at whether companies identify specific use cases, describe active operational use, quantify their use and connect it to measurable business results.</p>
+            </div>
+            <div class="work-visual has-image">
+              <img class="work-image contain" src="assets/sici-work-bist100-ai.webp" alt="SICI BIST 100 AI research visual showing measurable results from AI use" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-item">
+        <button class="work-row" type="button" aria-expanded="false">
+          <span class="work-no">05</span>
+          <span class="work-title-group">
+            <span class="work-name">Eventise</span>
+            <span class="work-subtitle">A digital system for managing participation from registration to certification.</span>
+          </span>
+          <span class="work-type">Product</span>
+          <span class="work-expand">
+            <span class="work-expand-label">Click to expand</span>
+            <span class="work-expand-icon" aria-hidden="true">↘</span>
+          </span>
+        </button>
+        <div class="work-detail">
+          <div class="work-detail-grid">
+            <div class="work-copy">
+              <p>Eventise brings the practical stages of an event into one workflow, including registration, participant communication, attendance and certificates. It was designed around the operational work that usually sits behind the event itself.</p>
+              <a href="https://eventise.sici.uk" target="_blank" rel="noopener">Explore Eventise →</a>
+            </div>
+            <div class="work-visual has-image">
+              <img class="work-image" src="assets/sici-work-eventise.webp" alt="Eventise event management product interface" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="mobile" id="mobileHome">
+
+  <section class="m-hero">
+    <div class="m-shell m-hero-inner">
+      <div>
+        <div class="m-eyebrow">Social Institute of Change and Impact</div>
+        <h1><span>From Ideas to Plans.</span><span>From Plans to Results.</span></h1>
+        <p class="m-summary">SICI works on complex social and institutional problems through strategy, systems, knowledge and technology.</p>
+      </div>
+
+      <div class="m-mobile-orbit" aria-label="SICI practice areas">
+        <div class="m-orbit-ring"></div>
+        <div class="m-center-mark">SICI
+          <span class="sici-star"><svg viewBox="0 0 40 40"><g fill="currentColor">
+            <rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+            <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+            <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+          </g></svg></span>
+        </div>
+
+        <div class="m-orbit-chip" data-m-hero-orbit="0"><span><b>01</b>Strategy</span></div>
+        <div class="m-orbit-chip" data-m-hero-orbit="1"><span><b>02</b>Funding</span></div>
+        <div class="m-orbit-chip" data-m-hero-orbit="2"><span><b>03</b>Campaigns</span></div>
+        <div class="m-orbit-chip" data-m-hero-orbit="3"><span><b>04</b>Digital & AI</span></div>
+        <div class="m-orbit-chip" data-m-hero-orbit="4"><span><b>05</b>Research</span></div>
+      </div>
+
+      <a class="m-scroll-hint" href="#m-practices">
+        <span>Explore What We Do</span><i></i><span>↓</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="m-practices" id="m-practices">
+    <div class="m-shell">
+      <div class="m-practices-head">
+        <span>What We Do</span>
+        <span class="m-practice-counter" id="mPracticeCounter">01 / 05</span>
+      </div>
+
+      <div class="m-practice-stage" id="mPracticeStage">
+        <div class="m-practice-orbit" id="mPracticeOrbit">
+          <button class="m-practice-dot active" data-m-index="0" aria-label="Strategy & Organisational Change">
+            <span class="m-dot-short">01</span>
+            <span class="m-dot-full"><span class="m-num">01</span><h2>Strategy & Organisational Change</h2></span>
+          </button>
+          <button class="m-practice-dot" data-m-index="1" aria-label="Funding Systems">
+            <span class="m-dot-short">02</span>
+            <span class="m-dot-full"><span class="m-num">02</span><h2>Funding Systems</h2></span>
+          </button>
+          <button class="m-practice-dot" data-m-index="2" aria-label="Campaigns & Public Engagement">
+            <span class="m-dot-short">03</span>
+            <span class="m-dot-full"><span class="m-num">03</span><h2>Campaigns & Public Engagement</h2></span>
+          </button>
+          <button class="m-practice-dot" data-m-index="3" aria-label="Digital Systems & AI">
+            <span class="m-dot-short">04</span>
+            <span class="m-dot-full"><span class="m-num">04</span><h2>Digital Systems & AI</h2></span>
+          </button>
+          <button class="m-practice-dot" data-m-index="4" aria-label="Research & Intelligence">
+            <span class="m-dot-short">05</span>
+            <span class="m-dot-full"><span class="m-num">05</span><h2>Research & Intelligence</h2></span>
+          </button>
+        </div>
+
+        <div class="m-practice-copy">
+          <h3 id="mPracticeHeadline"></h3>
+          <p id="mPracticeText"></p>
+          <div class="m-practice-caps" id="mPracticeCaps"></div>
+          <div class="m-practice-actions">
+            <a id="mPracticeLink" href="#" hidden aria-hidden="true"></a>
+            <a id="mPracticeSecondary" class="secondary" href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+          </div>
+        </div>
+
+        <div class="m-practice-nav">
+          <button class="active" data-m-go="0">01</button>
+          <button data-m-go="1">02</button>
+          <button data-m-go="2">03</button>
+          <button data-m-go="3">04</button>
+          <button data-m-go="4">05</button>
+        </div>
+        <div class="m-swipe-note">Swipe up to continue · tap a number to jump</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="m-how" id="m-how">
+    <div class="m-shell">
+      <div class="m-how-head"><h2>How SICI Works</h2></div>
+      <div class="m-how-list" id="mHowList">
+        <article class="m-how-item open">
+          <button class="m-how-row" type="button" aria-expanded="true">
+            <span class="m-how-no">01</span><span class="m-how-name">Understand</span><span class="m-how-arrow">↘</span>
+          </button>
+          <div class="m-how-body"><div class="m-how-copy">
+            <h3>Understand the problem</h3>
+            <p>We look at the evidence, the people involved, the constraints and the wider context to understand what is actually happening.</p>
+          </div></div>
+        </article>
+
+        <article class="m-how-item">
+          <button class="m-how-row" type="button" aria-expanded="false">
+            <span class="m-how-no">02</span><span class="m-how-name">Define</span><span class="m-how-arrow">↘</span>
+          </button>
+          <div class="m-how-body"><div class="m-how-copy">
+            <h3>Define the way forward</h3>
+            <p>We identify what needs to change, set the priorities and work out a practical direction.</p>
+          </div></div>
+        </article>
+
+        <article class="m-how-item">
+          <button class="m-how-row" type="button" aria-expanded="false">
+            <span class="m-how-no">03</span><span class="m-how-name">Build</span><span class="m-how-arrow">↘</span>
+          </button>
+          <div class="m-how-body"><div class="m-how-copy">
+            <h3>Build what is needed</h3>
+            <p>That may be a strategy, a plan, a campaign, a research product, a digital tool or a working system.</p>
+          </div></div>
+        </article>
+
+        <article class="m-how-item">
+          <button class="m-how-row" type="button" aria-expanded="false">
+            <span class="m-how-no">04</span><span class="m-how-name">Put it to work</span><span class="m-how-arrow">↘</span>
+          </button>
+          <div class="m-how-body"><div class="m-how-copy">
+            <h3>Put it to work</h3>
+            <p>We deliver what the work requires: a clear plan, a working tool, implementation support or continued involvement as the work develops.</p>
+          </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="m-work" id="m-work">
+    <div class="m-shell">
+      <div class="m-work-head">
+        <h2>Selected Work</h2>
+        <p>Products, initiatives, client work and research.</p>
+      </div>
+
+      <div class="m-work-list" id="mWorkList">
+        <article class="m-work-item">
+          <button class="m-work-row" type="button" aria-expanded="false">
+            <span class="m-work-no">01</span>
+            <span><span class="m-work-name">Grantise</span><span class="m-work-sub">A funding intelligence and workflow system.</span></span>
+            <span class="m-expand">↘</span><span class="m-expand-label">Click to expand</span>
+          </button>
+          <div class="m-work-detail"><div class="m-work-content">
+            <p>Grantise brings funding discovery, fit assessment and pipeline management into one system. It is being developed around a practical question: how can organisations find the right opportunities earlier and manage them consistently over time?</p>
+            <a href="https://grantise.com" target="_blank" rel="noopener">Explore Grantise →</a>
+            <div class="m-work-visual has-image"><img class="m-work-image" src="assets/sici-work-grantise.webp" alt="Grantise funding opportunities interface" loading="lazy"></div>
+          </div></div>
+        </article>
+
+        <article class="m-work-item">
+          <button class="m-work-row" type="button" aria-expanded="false">
+            <span class="m-work-no">02</span>
+            <span><span class="m-work-name">Donor Mapping for 12 Organisations</span><span class="m-work-sub">Mapping relevant funding sources across 12 organisations.</span></span>
+            <span class="m-expand">↘</span><span class="m-expand-label">Click to expand</span>
+          </button>
+          <div class="m-work-detail"><div class="m-work-content">
+            <p>SICI researched and mapped potential donors against the priorities and profiles of 12 organisations, creating a clearer view of relevant funding sources and future opportunities.</p>
+            <div class="m-work-visual light"><strong>DONOR<br>MAPPING</strong><span>Client work</span></div>
+          </div></div>
+        </article>
+
+        <article class="m-work-item">
+          <button class="m-work-row" type="button" aria-expanded="false">
+            <span class="m-work-no">03</span>
+            <span><span class="m-work-name">COP31Radar</span><span class="m-work-sub">Research and intelligence for COP31.</span></span>
+            <span class="m-expand">↘</span><span class="m-expand-label">Click to expand</span>
+          </button>
+          <div class="m-work-detail"><div class="m-work-content">
+            <p>COP31Radar follows the negotiations, actors and practical developments around COP31 and turns them into useful information for organisations preparing for Antalya. It combines regular research, analysis and on-the-ground context.</p>
+            <a href="https://cop31radar.com" target="_blank" rel="noopener">Explore COP31Radar →</a>
+            <div class="m-work-visual has-image"><img class="m-work-image" src="assets/sici-work-cop31radar.webp" alt="COP31Radar Issue 09 briefing interface" loading="lazy"></div>
+          </div></div>
+        </article>
+
+        <article class="m-work-item">
+          <button class="m-work-row" type="button" aria-expanded="false">
+            <span class="m-work-no">04</span>
+            <span><span class="m-work-name">AI in the BIST 100</span><span class="m-work-sub">Research into how Türkiye’s largest listed companies are using and communicating AI.</span></span>
+            <span class="m-expand">↘</span><span class="m-expand-label">Click to expand</span>
+          </button>
+          <div class="m-work-detail"><div class="m-work-content">
+            <p>SICI reviewed publicly available evidence of AI use across BIST 100 companies, looking at whether companies identify specific use cases, describe active operational use, quantify their use and connect it to measurable business results.</p>
+            <div class="m-work-visual has-image"><img class="m-work-image contain" src="assets/sici-work-bist100-ai.webp" alt="SICI BIST 100 AI research visual showing measurable results from AI use" loading="lazy"></div>
+          </div></div>
+        </article>
+
+        <article class="m-work-item">
+          <button class="m-work-row" type="button" aria-expanded="false">
+            <span class="m-work-no">05</span>
+            <span><span class="m-work-name">Eventise</span><span class="m-work-sub">A digital system for managing participation from registration to certification.</span></span>
+            <span class="m-expand">↘</span><span class="m-expand-label">Click to expand</span>
+          </button>
+          <div class="m-work-detail"><div class="m-work-content">
+            <p>Eventise brings the practical stages of an event into one workflow, including registration, participant communication, attendance and certificates. It was designed around the operational work that usually sits behind the event itself.</p>
+            <a href="https://eventise.sici.uk" target="_blank" rel="noopener">Explore Eventise →</a>
+            <div class="m-work-visual has-image"><img class="m-work-image" src="assets/sici-work-eventise.webp" alt="Eventise event management product interface" loading="lazy"></div>
+          </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<section class="about" id="about">
+  <div class="shell about-grid">
+    <div>
+      <span class="sici-mark">SICI
+        <span class="sici-star"><svg viewBox="0 0 40 40"><g fill="currentColor">
+          <rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+          <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+          <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+        </g></svg></span>
+      </span>
+      <h2>Strategy, Systems, Knowledge and Technology.</h2>
+    </div>
+    <div class="about-copy">
+      <p>SICI works on complex social and institutional problems. Our work spans organisational strategy and change, funding systems, campaigns and public engagement, digital systems and AI, and research and intelligence.</p>
+      <p>We bring these capabilities together around the needs of each project.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <div class="shell final-grid">
+    <div class="final-copy">
+      <h2>What Are You Trying to Make Happen?</h2>
+      <p>Tell us what you’re working on, where it gets difficult and what you need to move forward.</p>
+    </div>
+    <div class="final-actions">
+      <a class="final-contact" href="contact.html">Contact SICI →</a>
+      <a class="dev-link" href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+(()=>{
+const story=document.querySelector('.story'); if(!story) return;
+const $=s=>document.querySelector(s);
+
+const orbs=[0,1,2,3,4].map(i=>$('#orb'+i));
+const center=$('#center'),orbit=$('#orbit'),reveal=$('#reveal'),jump=$('#jump');
+const eyebrow=$('#eyebrow'),t1=$('#t1'),t2=$('#t2'),summary=$('#summary');
+const stepNo=$('#stepNo'),stepText=$('#stepText'),progressFill=$('#progressFill'),scrollCue=$('#scrollCue');
+const practiceExtra=$('#practiceExtra'),practiceCaps=$('#practiceCaps'),practiceLink=$('#practiceLink'),practiceSecondary=$('#practiceSecondary'),heroCtas=$('#heroCtas');
+const jumpButtons=[...document.querySelectorAll('#jump button')];
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Step navigation: one wheel/trackpad gesture = one scene. */
+let wheelGestureActive=false;
+let wheelGestureTimer=null;
+let navigationLock=false;
+const WHEEL_QUIET_MS=180;
+const NAV_LOCK_MS=760;
+
+const phases=[
+ {start:0,end:.085,type:'hero',no:'00',step:'Start',eye:'Social Institute of Change and Impact',
+  a:'From Ideas to Plans.',b:'From Plans to Results.',
+  sum:'SICI works on complex social and institutional problems through strategy, systems, knowledge and technology.'},
+ {start:.085,end:.245,type:'practice',index:0,no:'01',step:'1 / 5',eye:'Strategy & Organisational Change',
+  a:'Clear Direction',b:'For Impact.',
+  sum:'We help organisations understand where they are, decide where they need to go and turn that direction into a practical plan. The work can include strategy, organisational structure, governance, decision processes and change management.',
+  caps:'Strategy · Strategic review · Implementation planning · Organisational design · Change management',
+  href:'/what-we-do#strategy-organisational-change'},
+ {start:.245,end:.405,type:'practice',index:1,no:'02',step:'2 / 5',eye:'Funding Systems',
+  a:'A Stronger Path',b:'To Long-Term Funding.',
+  sum:'We help organisations find relevant funders, assess where there is a real fit and manage funding opportunities over time. This can include donor research, funding strategy, pipeline design, assessment frameworks and the systems used to keep the process moving.',
+  caps:'Donor research · Funding strategy · Opportunity assessment · Pipeline design · Funding workflows',
+  href:'/what-we-do#funding-systems'},
+ {start:.405,end:.565,type:'practice',index:2,no:'03',step:'3 / 5',eye:'Campaigns & Public Engagement',
+  a:'Reach, Involve',b:'And Mobilise People.',
+  sum:'We design campaigns and engagement processes around a clear objective and the people involved. The work can include campaign strategy, stakeholder engagement, messaging, consultation, participation and convening.',
+  caps:'Campaign strategy · Stakeholder engagement · Messaging · Consultation · Participation design',
+  href:'/what-we-do#campaigns-public-engagement'},
+ {start:.565,end:.725,type:'practice',index:3,no:'04',step:'4 / 5',eye:'Digital Systems & AI',
+  a:'AI and Technology',b:'Built for the Solution.',
+  sum:'We design and develop digital systems around specific organisational problems. This can mean improving a workflow, automating repetitive work, building an internal tool or developing a new product. AI becomes part of the system where it adds practical value.',
+  caps:'Custom tools · Digital products · Workflow automation · AI-assisted systems · Decision-support tools · MVPs',
+  href:'/what-we-do#digital-systems-ai',secondary:'https://sici.dev'},
+ {start:.725,end:.885,type:'practice',index:4,no:'05',step:'5 / 5',eye:'Research & Intelligence',
+  a:'Evidence. Context.',b:'Analysis.',
+  sum:'We research complex or fast-moving issues, bring together the relevant evidence and explain what the findings mean for the decision at hand. The output can be a report, a briefing, a landscape review or an ongoing intelligence process.',
+  caps:'Research · Situation analysis · Intelligence briefs · Landscape reviews · Monitoring · Decision support',
+  href:'/what-we-do#research-intelligence'},
+ {start:.885,end:1.001,type:'final'}
+];
+
+const radius=205;
+const offsets=[-1.5,-.28,.78,2.13,3.58];
+const speed=.000095;
+
+let targetPhase=0,lastCopy=-1,lastT=performance.now();
+const state=orbs.map(()=>({x:0,y:0,s:1,o:1}));
+let centerScale=1,centerOpacity=1,revealOpacity=0;
+
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+
+function phaseIndex(p){
+  return Math.max(0,phases.findIndex(ph=>p>=ph.start&&p<ph.end))
+}
+function orbitPoint(i,time){
+  const a=offsets[i]+time*speed;
+  return {x:Math.cos(a)*radius,y:Math.sin(a)*radius}
+}
+function swap(el,v){
+  if(el.textContent===v) return;
+  el.style.opacity='0';
+  el.style.transform='translateY(7px)';
+  setTimeout(()=>{
+    el.textContent=v;
+    el.style.opacity='1';
+    el.style.transform='none'
+  },reduced?0:85)
+}
+function updateCopy(ph,idx){
+  if(lastCopy===idx||ph.type==='final') return;
+
+  swap(eyebrow,ph.eye);
+  swap(t1,ph.a);
+  swap(t2,ph.b);
+  swap(summary,ph.sum);
+  stepNo.textContent=ph.no;
+  stepText.textContent=ph.step;
+
+  const isPractice=ph.type==='practice';
+  practiceExtra.classList.toggle('show',isPractice);
+  heroCtas.style.display=isPractice?'none':'flex';
+
+  if(isPractice){
+    practiceCaps.textContent=ph.caps||'';
+    practiceLink.href=ph.href||'/what-we-do';
+    const hasSecondary=Boolean(ph.secondary);
+    practiceSecondary.classList.toggle('show',hasSecondary);
+    if(hasSecondary) practiceSecondary.href=ph.secondary;
+  }else{
+    practiceSecondary.classList.remove('show');
+  }
+
+  lastCopy=idx
+}
+
+function render(now){
+  const dt=Math.min(40,now-lastT);
+  lastT=now;
+  const easing=1-Math.pow(.001,dt/620);
+  const ph=phases[targetPhase];
+  const storyEl=document.querySelector('.story');
+  const headerEl=document.querySelector('.header');
+  const howEl=document.querySelector('#how');
+  const howRect=howEl?howEl.getBoundingClientRect():null;
+  const howOn=Boolean(howRect && howRect.top<innerHeight*.35 && howRect.bottom>innerHeight*.35);
+  const invertOn=ph.type==='practice'||howOn;
+  const responsiveMobile=matchMedia('(max-width:1000px)').matches;
+  if(!responsiveMobile){
+    storyEl.classList.toggle('invert',invertOn);
+    headerEl.classList.toggle('invert',invertOn);
+  }
+
+  orbs.forEach((orb,i)=>{
+    const base=orbitPoint(i,now);
+    let tx=base.x,ty=base.y,ts=1,to=1,focus=false,passing=false;
+
+    if(ph.type==='practice'){
+      if(i===ph.index){
+        tx=0;ty=0;
+        focus=true;
+      }else{
+        ts=.80;
+        to=.24;
+      }
+
+      const prev=(ph.index+4)%5;
+      if(i===prev){
+        passing=true;
+        tx=base.x-40;
+        ty=base.y+18;
+      }
+    }
+
+    if(ph.type==='final'){
+      ts=.7;
+      to=0;
+    }
+
+    state[i].x=lerp(state[i].x,tx,easing);
+    state[i].y=lerp(state[i].y,ty,easing);
+    state[i].s=lerp(state[i].s,ts,easing);
+    state[i].o=lerp(state[i].o,to,easing);
+
+    orb.classList.toggle('focus',focus);
+    orb.classList.toggle('passing',passing);
+    orb.style.transform=`translate(${state[i].x}px,${state[i].y}px) scale(${state[i].s})`;
+    orb.style.opacity=state[i].o;
+  });
+
+  let targetCS=1,targetCO=1,targetRO=0;
+  if(ph.type==='practice'){
+    targetCS=.86;
+    targetCO=.15;
+  }
+  if(ph.type==='final'){
+    targetCS=10.4;
+    targetCO=0;
+    targetRO=1;
+  }
+
+  centerScale=lerp(centerScale,targetCS,easing);
+  centerOpacity=lerp(centerOpacity,targetCO,easing);
+  revealOpacity=lerp(revealOpacity,targetRO,easing);
+
+  center.style.transform=`scale(${centerScale})`;
+  center.style.opacity=centerOpacity;
+  orbit.style.opacity=ph.type==='final'?'0':(ph.type==='practice'?'.38':'1');
+  reveal.style.opacity=revealOpacity;
+
+  const finalText=ph.type==='final' && revealOpacity>.62;
+  reveal.classList.toggle('show',ph.type==='final');
+  reveal.classList.toggle('text',finalText);
+  jump.classList.toggle('hide',ph.type==='final');
+
+  requestAnimationFrame(render)
+}
+
+function onScroll(){
+  const rect=story.getBoundingClientRect();
+  const max=story.offsetHeight-innerHeight;
+  const p=clamp(-rect.top/max);
+
+  // During a programmed step transition, the animation target stays locked.
+  // Otherwise smooth scrolling across intermediate thresholds would briefly
+  // activate other phases and interrupt the visual choreography.
+  if(!navigationLock){
+    targetPhase=phaseIndex(p);
+  }
+
+  const ph=phases[targetPhase];
+  updateCopy(ph,targetPhase);
+
+  if(ph.type!=='final'){
+    const local=clamp((p-ph.start)/(ph.end-ph.start));
+    progressFill.style.width=`${Math.max(3,local*100)}%`
+  }else{
+    progressFill.style.width='100%'
+  }
+
+  scrollCue.style.opacity=p<.045?'1':'0';
+
+  jumpButtons.forEach(btn=>{
+    const j=Number(btn.dataset.jump);
+    btn.classList.toggle('active',ph.type==='practice'&&j===ph.index+1)
+  });
+
+  const docMax=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+  document.documentElement.style.setProperty('--page',`${clamp(scrollY/docMax)*100}%`)
+}
+
+
+
+function storyScrollMax(){
+  return Math.max(1,story.offsetHeight-innerHeight);
+}
+
+function phaseScrollTop(idx){
+  const ph=phases[idx];
+  if(!ph)return story.offsetTop;
+  return story.offsetTop + Math.min(.995,ph.start+.008)*storyScrollMax();
+}
+
+function navigateToPhase(idx){
+  idx=Math.max(0,Math.min(phases.length-1,idx));
+  if(navigationLock && idx!==targetPhase)return;
+
+  targetPhase=idx;
+  navigationLock=true;
+
+  // Switch the visual state now; scrolling only repositions the document.
+  updateCopy(phases[idx],idx);
+
+  scrollTo({
+    top:phaseScrollTop(idx),
+    behavior:reduced?'auto':'smooth'
+  });
+
+  setTimeout(()=>{
+    navigationLock=false;
+    // Resync once after the scroll has settled.
+    onScroll();
+  },reduced?0:NAV_LOCK_MS);
+}
+
+function navigateStep(direction){
+  if(direction>0){
+    if(targetPhase<phases.length-1){
+      navigateToPhase(targetPhase+1);
+      return true;
+    }
+    const nextSection=document.querySelector('#how');
+    if(nextSection){
+      navigationLock=true;
+      nextSection.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+      setTimeout(()=>{navigationLock=false},reduced?0:NAV_LOCK_MS);
+      return true;
+    }
+  }
+
+  if(direction<0){
+    if(targetPhase>0){
+      navigateToPhase(targetPhase-1);
+      return true;
+    }
+    if(scrollY>story.offsetTop+4){
+      navigationLock=true;
+      scrollTo({top:story.offsetTop,behavior:reduced?'auto':'smooth'});
+      setTimeout(()=>{navigationLock=false},reduced?0:NAV_LOCK_MS);
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function storyOwnsViewport(){
+  const r=story.getBoundingClientRect();
+  return r.top<=2 && r.bottom>=innerHeight-2;
+}
+
+function onWheelStep(e){
+  if(!storyOwnsViewport())return;
+  if(Math.abs(e.deltaY)<2)return;
+
+  clearTimeout(wheelGestureTimer);
+  wheelGestureTimer=setTimeout(()=>{
+    wheelGestureActive=false;
+  },WHEEL_QUIET_MS);
+
+  if(wheelGestureActive||navigationLock){
+    e.preventDefault();
+    return;
+  }
+
+  if(navigateStep(e.deltaY>0?1:-1)){
+    e.preventDefault();
+    wheelGestureActive=true;
+  }
+}
+
+function onKeyStep(e){
+  const el=document.activeElement;
+  const tag=(el?.tagName||'').toLowerCase();
+
+  if(tag==='input'||tag==='textarea'||tag==='select'||el?.isContentEditable)return;
+  if(!storyOwnsViewport())return;
+
+  let direction=0;
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='PageDown')direction=1;
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp')direction=-1;
+
+  if(direction && navigateStep(direction)){
+    e.preventDefault();
+  }
+}
+
+window.addEventListener('wheel',onWheelStep,{passive:false});
+window.addEventListener('keydown',onKeyStep);
+
+orbs.forEach((orb,i)=>{
+  const go=()=>navigateToPhase(i+1);
+
+  orb.addEventListener('click',go);
+  orb.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      go();
+    }
+  });
+});
+
+jumpButtons.forEach(btn=>btn.addEventListener('click',()=>{
+  const j=Number(btn.dataset.jump);
+  if(phases[j])navigateToPhase(j);
+}));
+
+onScroll();
+requestAnimationFrame(render);
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',onScroll);
+})();
+
+/* How SICI Works — step-based horizontal process */
+(()=>{
+  const how=document.querySelector('#how');
+  if(!how) return;
+
+  const steps=[...how.querySelectorAll('.how-step')];
+  const tabs=[...how.querySelectorAll('.how-tab')];
+  const position=document.querySelector('#howPosition');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let active=0;
+  let navLock=false;
+  let gestureActive=false;
+  let gestureTimer=null;
+  const QUIET=180;
+  const LOCK=680;
+
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+
+  function scrollMax(){
+    return Math.max(1,how.offsetHeight-innerHeight);
+  }
+
+  function stepTop(i){
+    return how.offsetTop + (i/(steps.length-1))*scrollMax();
+  }
+
+  function setActive(i){
+    active=clamp(i,0,steps.length-1);
+    steps.forEach((step,j)=>{
+      const on=j===active;
+      step.classList.toggle('active',on);
+      tabs[j].setAttribute('aria-expanded',String(on));
+    });
+    position.textContent=String(active+1).padStart(2,'0')+' / 04';
+  }
+
+  function go(i){
+    i=clamp(i,0,steps.length-1);
+    if(navLock && i!==active) return;
+    setActive(i);
+    navLock=true;
+    scrollTo({top:stepTop(i),behavior:reduced?'auto':'smooth'});
+    setTimeout(()=>{navLock=false;sync()},reduced?0:LOCK);
+  }
+
+  function sync(){
+    if(navLock) return;
+    const rect=how.getBoundingClientRect();
+    const p=clamp(-rect.top/scrollMax());
+    const i=Math.round(p*(steps.length-1));
+    setActive(i);
+  }
+
+  function ownsViewport(){
+    const r=how.getBoundingClientRect();
+    return r.top<=2 && r.bottom>=innerHeight-2;
+  }
+
+  function wheel(e){
+    if(!ownsViewport() || Math.abs(e.deltaY)<2) return;
+
+    clearTimeout(gestureTimer);
+    gestureTimer=setTimeout(()=>{gestureActive=false},QUIET);
+
+    if(gestureActive||navLock){
+      e.preventDefault();
+      return;
+    }
+
+    if(e.deltaY>0){
+      if(active<steps.length-1){
+        e.preventDefault();gestureActive=true;go(active+1);return;
+      }
+      const work=document.querySelector('#work');
+      if(work){
+        e.preventDefault();gestureActive=true;navLock=true;
+        work.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+        setTimeout(()=>{navLock=false},reduced?0:LOCK);
+      }
+    }else{
+      if(active>0){
+        e.preventDefault();gestureActive=true;go(active-1);return;
+      }
+      const story=document.querySelector('#story');
+      if(story){
+        e.preventDefault();gestureActive=true;navLock=true;
+        scrollTo({top:story.offsetTop+story.offsetHeight-innerHeight-4,behavior:reduced?'auto':'smooth'});
+        setTimeout(()=>{navLock=false},reduced?0:LOCK);
+      }
+    }
+  }
+
+  function keys(e){
+    const tag=(document.activeElement?.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||document.activeElement?.isContentEditable) return;
+    if(!ownsViewport()) return;
+
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='PageDown'){
+      e.preventDefault();
+      if(active<steps.length-1) go(active+1);
+      else document.querySelector('#work')?.scrollIntoView({behavior:reduced?'auto':'smooth'});
+    }
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp'){
+      e.preventDefault();
+      if(active>0) go(active-1);
+      else{
+        const story=document.querySelector('#story');
+        if(story) scrollTo({top:story.offsetTop+story.offsetHeight-innerHeight-4,behavior:reduced?'auto':'smooth'});
+      }
+    }
+  }
+
+  tabs.forEach((tab,i)=>tab.addEventListener('click',()=>go(i)));
+  addEventListener('wheel',wheel,{passive:false});
+  addEventListener('keydown',keys);
+  addEventListener('scroll',sync,{passive:true});
+  addEventListener('resize',sync);
+
+  setActive(0);
+})();
+
+/* Selected Work — collapsed editorial accordion */
+(()=>{
+  const list=document.querySelector('#workList');
+  if(!list) return;
+  const items=[...list.querySelectorAll('.work-item')];
+
+  function setState(item,on){
+    item.classList.toggle('open',on);
+    const button=item.querySelector('.work-row');
+    button.setAttribute('aria-expanded',String(on));
+    const label=item.querySelector('.work-expand-label');
+    if(label) label.textContent=on?'Click to close':'Click to expand';
+  }
+
+  items.forEach(item=>{
+    setState(item,false);
+
+    item.querySelector('.work-row').addEventListener('click',()=>{
+      const willOpen=!item.classList.contains('open');
+      items.forEach(other=>setState(other,other===item && willOpen));
+    });
+  });
+})();
+
+
+/* ===============================================================
+   Responsive mobile/tablet experience
+   =============================================================== */
+(()=>{
+  const mobileRoot=document.querySelector('#mobileHome');
+  if(!mobileRoot)return;
+
+  const mobileMq=matchMedia('(max-width:1000px)');
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const practices=[
+    {
+      h:'Clear Direction<br>For Impact.',
+      p:'We help organisations understand where they are, decide where they need to go and turn that direction into a practical plan. The work can include strategy, organisational structure, governance, decision processes and change management.',
+      caps:'Strategy · Strategic review · Implementation planning · Organisational design · Change management',
+      href:'/what-we-do#strategy-organisational-change'
+    },
+    {
+      h:'A Stronger Path<br>To Long-Term Funding.',
+      p:'We help organisations find relevant funders, assess where there is a real fit and manage funding opportunities over time. This can include donor research, funding strategy, pipeline design, assessment frameworks and the systems used to keep the process moving.',
+      caps:'Donor research · Funding strategy · Opportunity assessment · Pipeline design · Funding workflows',
+      href:'/what-we-do#funding-systems'
+    },
+    {
+      h:'Reach, Involve<br>And Mobilise People.',
+      p:'We design campaigns and engagement processes around a clear objective and the people involved. The work can include campaign strategy, stakeholder engagement, messaging, consultation, participation and convening.',
+      caps:'Campaign strategy · Stakeholder engagement · Messaging · Consultation · Participation design',
+      href:'/what-we-do#campaigns-public-engagement'
+    },
+    {
+      h:'AI and Technology<br>Built for the Solution.',
+      p:'We design and develop digital systems around specific organisational problems. This can mean improving a workflow, automating repetitive work, building an internal tool or developing a new product. AI becomes part of the system where it adds practical value.',
+      caps:'Custom tools · Digital products · Workflow automation · AI-assisted systems · Decision-support tools · MVPs',
+      href:'/what-we-do#digital-systems-ai',
+      secondary:true
+    },
+    {
+      h:'Evidence. Context.<br>Analysis.',
+      p:'We research complex or fast-moving issues, bring together the relevant evidence and explain what the findings mean for the decision at hand. The output can be a report, a briefing, a landscape review or an ongoing intelligence process.',
+      caps:'Research · Situation analysis · Intelligence briefs · Landscape reviews · Monitoring · Decision support',
+      href:'/what-we-do#research-intelligence'
+    }
+  ];
+
+  /* Hero orbit */
+  const heroOrbit=mobileRoot.querySelector('.m-mobile-orbit');
+  const heroChips=[...mobileRoot.querySelectorAll('[data-m-hero-orbit]')];
+
+  function placeHeroOrbit(){
+    if(!mobileMq.matches || !heroOrbit)return;
+    const rect=heroOrbit.getBoundingClientRect();
+    if(!rect.width)return;
+
+    const cx=rect.width/2;
+    const cy=rect.height/2;
+    const radius=rect.width*.46;
+
+    heroChips.forEach((chip,i)=>{
+      const angle=(-90+i*72)*Math.PI/180;
+      chip.style.left=(cx+Math.cos(angle)*radius)+'px';
+      chip.style.top=(cy+Math.sin(angle)*radius)+'px';
+    });
+  }
+
+  /* Practices */
+  const dots=[...mobileRoot.querySelectorAll('.m-practice-dot')];
+  const nav=[...mobileRoot.querySelectorAll('[data-m-go]')];
+  const counter=mobileRoot.querySelector('#mPracticeCounter');
+  const headline=mobileRoot.querySelector('#mPracticeHeadline');
+  const copy=mobileRoot.querySelector('#mPracticeText');
+  const caps=mobileRoot.querySelector('#mPracticeCaps');
+  const link=mobileRoot.querySelector('#mPracticeLink');
+  const secondary=mobileRoot.querySelector('#mPracticeSecondary');
+  const orbit=mobileRoot.querySelector('#mPracticeOrbit');
+  const practiceSection=mobileRoot.querySelector('#m-practices');
+  const stage=mobileRoot.querySelector('#mPracticeStage');
+
+  let active=0;
+  let stepLock=false;
+  let wheelGesture=false;
+  let wheelTimer=null;
+  let touchStartX=0;
+  let touchStartY=0;
+  let touchCaptured=false;
+  let unlockTimer=null;
+
+  const STEP_LOCK_MS=620;
+  const WHEEL_QUIET_MS=180;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+  function placeDots(){
+    if(!mobileMq.matches || !orbit)return;
+    const rect=orbit.getBoundingClientRect();
+    if(!rect.width)return;
+
+    const cx=rect.width/2;
+    const cy=rect.height/2;
+    const radius=rect.width*.42;
+    const passive=dots.map((dot,i)=>({dot,i})).filter(item=>item.i!==active);
+    const angles=[-90,0,90,180];
+
+    passive.forEach(({dot},slot)=>{
+      const angle=angles[slot]*Math.PI/180;
+      dot.style.left=(cx+Math.cos(angle)*radius)+'px';
+      dot.style.top=(cy+Math.sin(angle)*radius)+'px';
+      dot.style.transform='translate(-50%,-50%)';
+    });
+
+    const current=dots[active];
+    current.style.left='50%';
+    current.style.top='50%';
+    current.style.transform='translate(-50%,-50%)';
+  }
+
+  function renderPractice(index){
+    active=clamp(index,0,practices.length-1);
+    const data=practices[active];
+
+    dots.forEach((dot,i)=>{
+      const selected=i===active;
+      dot.classList.toggle('active',selected);
+      dot.setAttribute('aria-pressed',String(selected));
+    });
+
+    nav.forEach((button,i)=>{
+      const selected=i===active;
+      button.classList.toggle('active',selected);
+      button.setAttribute('aria-current',selected?'step':'false');
+    });
+
+    counter.textContent=String(active+1).padStart(2,'0')+' / 05';
+    headline.innerHTML=data.h;
+    copy.textContent=data.p;
+    caps.textContent=data.caps;
+    link.href=data.href;
+
+    if(data.secondary){
+      secondary.style.display='inline';
+      secondary.href='https://sici.dev';
+    }else{
+      secondary.style.display='none';
+    }
+
+    requestAnimationFrame(placeDots);
+  }
+
+  function practiceScrollMax(){
+    return Math.max(1,practiceSection.offsetHeight-innerHeight);
+  }
+
+  function stepTop(index){
+    return practiceSection.offsetTop+(index/(practices.length-1))*practiceScrollMax();
+  }
+
+  function sectionOwnsViewport(){
+    if(!mobileMq.matches)return false;
+    const r=practiceSection.getBoundingClientRect();
+    return r.top<=4 && r.bottom>=innerHeight-4;
+  }
+
+  function unlockAfterTransition(){
+    clearTimeout(unlockTimer);
+    unlockTimer=setTimeout(()=>{
+      stepLock=false;
+      syncFromScroll();
+    },reducedMotion?0:STEP_LOCK_MS);
+  }
+
+  function goToStep(index,{direct=false}={}){
+    if(!mobileMq.matches)return;
+    index=clamp(index,0,practices.length-1);
+    if(stepLock && !direct)return;
+
+    if(direct){
+      stepLock=false;
+      clearTimeout(unlockTimer);
+    }
+
+    renderPractice(index);
+    stepLock=true;
+
+    scrollTo({
+      top:stepTop(index),
+      behavior:reducedMotion?'auto':'smooth'
+    });
+
+    unlockAfterTransition();
+  }
+
+  function exitForward(){
+    const how=mobileRoot.querySelector('#m-how');
+    if(!how)return;
+    stepLock=true;
+    how.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+    unlockAfterTransition();
+  }
+
+  function exitBackward(){
+    stepLock=true;
+    scrollTo({
+      top:Math.max(0,practiceSection.offsetTop-innerHeight*.92),
+      behavior:reducedMotion?'auto':'smooth'
+    });
+    unlockAfterTransition();
+  }
+
+  function nextStep(direction){
+    if(direction>0){
+      if(active<practices.length-1)goToStep(active+1);
+      else exitForward();
+    }else{
+      if(active>0)goToStep(active-1);
+      else exitBackward();
+    }
+  }
+
+  function syncFromScroll(){
+    if(!mobileMq.matches || stepLock)return;
+    const rect=practiceSection.getBoundingClientRect();
+    if(rect.top>4 || rect.bottom<innerHeight-4)return;
+
+    const p=clamp(-rect.top/practiceScrollMax(),0,1);
+    const index=Math.round(p*(practices.length-1));
+    if(index!==active)renderPractice(index);
+  }
+
+  dots.forEach((dot,i)=>{
+    dot.type='button';
+    dot.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      goToStep(i,{direct:true});
+    });
+  });
+
+  nav.forEach((button,i)=>{
+    button.type='button';
+    button.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      goToStep(i,{direct:true});
+    });
+  });
+
+  addEventListener('wheel',e=>{
+    if(!sectionOwnsViewport() || Math.abs(e.deltaY)<2)return;
+
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(()=>{wheelGesture=false},WHEEL_QUIET_MS);
+
+    if(wheelGesture||stepLock){
+      e.preventDefault();
+      return;
+    }
+
+    e.preventDefault();
+    wheelGesture=true;
+    nextStep(e.deltaY>0?1:-1);
+  },{passive:false});
+
+  stage.addEventListener('touchstart',e=>{
+    if(!sectionOwnsViewport())return;
+    const t=e.changedTouches[0];
+    touchStartX=t.clientX;
+    touchStartY=t.clientY;
+    touchCaptured=false;
+  },{passive:true});
+
+  stage.addEventListener('touchmove',e=>{
+    if(!sectionOwnsViewport() || stepLock)return;
+    const t=e.changedTouches[0];
+    const dx=t.clientX-touchStartX;
+    const dy=t.clientY-touchStartY;
+
+    if(Math.abs(dy)>10 && Math.abs(dy)>Math.abs(dx)*1.15){
+      touchCaptured=true;
+      e.preventDefault();
+    }
+  },{passive:false});
+
+  stage.addEventListener('touchend',e=>{
+    if(!sectionOwnsViewport() || stepLock){
+      touchCaptured=false;
+      return;
+    }
+
+    const t=e.changedTouches[0];
+    const dx=t.clientX-touchStartX;
+    const dy=t.clientY-touchStartY;
+
+    if(touchCaptured && Math.abs(dy)>38 && Math.abs(dy)>Math.abs(dx)*1.15){
+      nextStep(dy<0?1:-1);
+    }
+    touchCaptured=false;
+  },{passive:true});
+
+  /* Mobile How accordion */
+  mobileRoot.querySelectorAll('.m-how-item').forEach(item=>{
+    item.querySelector('.m-how-row').addEventListener('click',()=>{
+      const willOpen=!item.classList.contains('open');
+      mobileRoot.querySelectorAll('.m-how-item').forEach(other=>{
+        const on=other===item&&willOpen;
+        other.classList.toggle('open',on);
+        other.querySelector('.m-how-row').setAttribute('aria-expanded',String(on));
+      });
+    });
+  });
+
+  /* Mobile Work accordion */
+  mobileRoot.querySelectorAll('.m-work-item').forEach(item=>{
+    const row=item.querySelector('.m-work-row');
+    row.addEventListener('click',()=>{
+      const willOpen=!item.classList.contains('open');
+
+      mobileRoot.querySelectorAll('.m-work-item').forEach(other=>{
+        const on=other===item&&willOpen;
+        other.classList.toggle('open',on);
+        other.querySelector('.m-work-row').setAttribute('aria-expanded',String(on));
+
+        const label=other.querySelector('.m-expand-label');
+        if(label)label.textContent=on?'Click to close':'Click to expand';
+      });
+    });
+  });
+
+  /* Header tone on mobile/tablet */
+  const header=document.querySelector('.header');
+  const darkMobileSections=[
+    mobileRoot.querySelector('#m-practices'),
+    mobileRoot.querySelector('#m-how'),
+    document.querySelector('#contact')
+  ].filter(Boolean);
+
+  function updateMobileHeader(){
+    if(!mobileMq.matches)return;
+    const y=70;
+    const dark=darkMobileSections.some(section=>{
+      const r=section.getBoundingClientRect();
+      return r.top<=y && r.bottom>=y;
+    });
+    header.classList.toggle('invert',dark);
+  }
+
+  function layoutMobile(){
+    if(!mobileMq.matches){
+      header.classList.remove('invert');
+      return;
+    }
+    placeHeroOrbit();
+    placeDots();
+    syncFromScroll();
+    updateMobileHeader();
+  }
+
+  addEventListener('scroll',()=>{
+    syncFromScroll();
+    updateMobileHeader();
+  },{passive:true});
+
+  addEventListener('resize',layoutMobile);
+  mobileMq.addEventListener?.('change',layoutMobile);
+
+  renderPractice(0);
+  requestAnimationFrame(layoutMobile);
+})();
+
+
+(()=>{
+  const btn=document.querySelector('#mobileMenuBtn');
+  const menu=document.querySelector('#mobileMenu');
+  if(!btn||!menu)return;
+
+  function setMenu(open){
+    menu.classList.toggle('open',open);
+    menu.setAttribute('aria-hidden',String(!open));
+    btn.setAttribute('aria-expanded',String(open));
+    btn.textContent=open?'Close':'Menu';
+    document.body.classList.toggle('menu-open',open);
+  }
+
+  btn.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>setMenu(false));
+  });
+  addEventListener('keydown',e=>{
+    if(e.key==='Escape')setMenu(false);
+  });
+})();
+
+</script>
+</body>
+</html>
+<style>
+.header{transition:background .48s ease,border-color .48s ease,color .48s ease}
+.header.invert{
+  background:rgba(8,9,11,.86);
+  border-color:rgba(255,255,255,.13);
+  color:#fff;
+}
+.header.invert .sici-mark,
+.header.invert .nav a{color:#fff}
+.header.invert .nav a{opacity:.72}
+.header.invert .nav a:hover{background:rgba(255,255,255,.08);opacity:1}
+.header.invert .contact-btn{background:#fff;color:#08090B}
+.story.invert{
+  --stage-bg:#08090B;
+  --stage-fg:#FFFFFF;
+  --stage-muted:#AAB1BC;
+  --stage-line:#343840;
+  --orb-bg:#101217;
+  --orb-fg:#FFFFFF;
+  --orb-border:#FFFFFF;
+  --focus-bg:#FFFFFF;
+  --focus-fg:#08090B;
+  --focus-glow:rgba(255,255,255,.22);
+}
+.story.invert .primary{background:#fff;color:#08090B}
+.story.invert .secondary{background:transparent;border-color:#343840;color:#fff}
+.story.invert .jump{
+  background:rgba(14,16,20,.92);
+  border-color:#343840
+}
+.story.invert .jump button.active{background:#fff;color:#08090B}
+.story.invert .jump button{color:#AAB1BC}
+.story.invert .center{box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+</style>

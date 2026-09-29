@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="assets/sici-favicon.svg" type="image/svg+xml">
+<title>About SICI — Social Institute of Change and Impact</title>
+<link rel="canonical" href="https://sici.uk/about">
+<meta name="description" content="SICI studies how change happens and how meaningful impact is created, and brings that understanding into practical work with organisations.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About SICI — Social Institute of Change and Impact">
+<meta property="og:description" content="SICI studies how change happens and how meaningful impact is created, and brings that understanding into practical work with organisations.">
+<meta property="og:url" content="https://sici.uk/about">
+<meta property="og:image" content="https://sici.uk/assets/sici-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#FCFCFB;
+  --fg:#08090B;
+  --muted:#626B76;
+  --line:#DADDE2;
+  --dark:#08090B;
+  --white:#FCFCFB;
+  --ease:cubic-bezier(.22,.72,.18,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.shell{width:min(calc(100% - 60px),1240px);margin:0 auto}
+
+.header{
+  position:fixed;
+  z-index:100;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(calc(100vw - 28px),1240px);
+  min-height:56px;
+  padding:9px 11px 9px 18px;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  background:rgba(252,252,251,.93);
+  border:1px solid rgba(8,9,11,.08);
+  border-radius:999px;
+  backdrop-filter:blur(16px);
+}
+.header>a:first-child{display:flex;align-items:center;margin-right:auto}
+.sici-mark{
+  display:inline-flex;
+  align-items:center;
+  font-size:22px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.065em;
+}
+.sici-star{
+  display:inline-flex;
+  width:.48em;height:.48em;
+  margin-left:.03em;
+}
+.sici-star svg{width:100%;height:100%}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a{font-size:11px;font-weight:800}
+.contact-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 15px;
+  border-radius:999px;
+  background:#08090B;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+}
+
+.page-hero{
+  min-height:58svh;
+  padding:136px 0 64px;
+  display:flex;
+  align-items:flex-end;
+}
+.kicker{
+  margin-bottom:24px;
+  font-size:11px;
+  font-weight:800;
+  color:#7C8590;
+}
+.page-title{
+  margin:0;
+  max-width:1100px;
+  font-size:clamp(82px,10.5vw,156px);
+  line-height:.82;
+  letter-spacing:-.08em;
+  font-weight:800;
+}
+.lead{
+  margin:38px 0 0;
+  max-width:920px;
+  font-size:clamp(25px,3.2vw,47px);
+  line-height:1.03;
+  letter-spacing:-.055em;
+  font-weight:700;
+}
+
+.text-section{padding:72px 0 96px}
+.text-grid{
+  display:grid;
+  grid-template-columns:minmax(180px,.65fr) minmax(0,1.65fr);
+  gap:80px;
+  align-items:start;
+}
+.section-label{
+  position:sticky;
+  top:104px;
+  font-size:11px;
+  font-weight:800;
+  color:#858D97;
+}
+.prose{max-width:790px}
+.prose p{
+  margin:0;
+  font-size:clamp(18px,1.6vw,23px);
+  line-height:1.58;
+  color:#343B44;
+}
+.prose p+p{margin-top:28px}
+.prose .strong{
+  color:#08090B;
+  font-weight:700;
+}
+
+
+.about-flow{
+  padding:72px 0 104px;
+}
+.about-flow-grid{
+  display:grid;
+  grid-template-columns:minmax(180px,.65fr) minmax(0,1.65fr);
+  gap:80px;
+  align-items:start;
+}
+.about-flow .section-label{
+  position:sticky;
+  top:104px;
+}
+.about-flow .prose{
+  max-width:820px;
+}
+.about-flow .prose p{
+  margin:0;
+  font-size:clamp(18px,1.6vw,23px);
+  line-height:1.58;
+  color:#343B44;
+}
+.about-flow .prose p+p{margin-top:26px}
+.about-pivot{
+  margin:54px 0 28px;
+  padding-top:34px;
+  border-top:1px solid #DADDE2;
+  font-size:clamp(31px,3.4vw,48px);
+  line-height:1.04;
+  letter-spacing:-.055em;
+  font-weight:700;
+  color:#08090B;
+}
+.about-flow .prose .after-pivot{margin-top:0}
+.about-work-link{
+  display:inline-block;
+  margin-top:34px;
+  padding-bottom:4px;
+  border-bottom:1px solid #08090B;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.4;
+  color:#08090B;
+}
+.about-work-link:hover{opacity:.62}
+
+.dark-section{
+  background:#08090B;
+  color:#FCFCFB;
+  padding:118px 0 124px;
+}
+.dark-section .section-label{color:#787F88}
+.dark-section .prose p{color:#C4C9D0}
+.dark-section .prose .strong{color:#fff}
+
+.page-cta{
+  padding:120px 0 130px;
+  border-top:1px solid #E0E2E5;
+}
+.page-cta h2{
+  margin:0;
+  max-width:900px;
+  font-size:clamp(58px,7vw,102px);
+  line-height:.88;
+  letter-spacing:-.07em;
+}
+.page-cta p{
+  margin:25px 0 0;
+  max-width:620px;
+  font-size:16px;
+  line-height:1.6;
+  color:#626B76;
+}
+.cta-link{
+  display:inline-flex;
+  margin-top:30px;
+  min-height:46px;
+  padding:0 19px;
+  align-items:center;
+  justify-content:center;
+  background:#08090B;
+  color:#fff;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.mobile-menu-btn,.mobile-menu{display:none}
+
+@media(max-width:1000px){
+  .shell{width:min(calc(100% - 34px),760px)}
+  .nav,.contact-btn{display:none!important}
+  .header{
+    top:max(10px,env(safe-area-inset-top));
+    width:min(calc(100vw - 20px),740px);
+    padding:9px 11px 9px 16px;
+  }
+  .mobile-menu-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:34px;
+    padding:0 14px;
+    border:0;border-radius:999px;
+    background:#08090B;color:#fff;
+    font-size:10px;font-weight:800;
+    cursor:pointer;position:relative;z-index:101;
+  }
+  .mobile-menu{
+    display:block;
+    position:fixed;inset:0;z-index:95;
+    background:#08090B;color:#fff;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease,visibility .28s ease;
+  }
+  .mobile-menu.open{opacity:1;visibility:visible;pointer-events:auto}
+  .mobile-menu-inner{
+    min-height:100svh;
+    width:min(calc(100% - 34px),680px);
+    margin:0 auto;
+    padding:max(110px,calc(env(safe-area-inset-top) + 94px)) 0 54px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .mobile-menu-inner a{
+    display:block;padding:15px 0;
+    border-bottom:1px solid #31343A;
+    font-size:clamp(38px,10vw,62px);
+    line-height:.95;font-weight:800;letter-spacing:-.06em;
+  }
+  body.menu-open{overflow:hidden}
+
+  .page-hero{min-height:52svh;padding:118px 0 52px}
+  .page-title{font-size:clamp(66px,15vw,112px)}
+  .lead{max-width:690px;font-size:clamp(30px,6vw,48px)}
+  .text-section,.dark-section{padding:64px 0 70px}
+  .about-flow{padding:56px 0 72px}
+  .about-flow .prose p{font-size:16px}
+  .about-pivot{margin:36px 0 22px;padding-top:24px;font-size:clamp(29px,9vw,38px)}
+  .about-flow{padding:64px 0 84px}
+  .about-flow-grid{grid-template-columns:1fr;gap:26px}
+  .about-flow .section-label{position:static}
+  .about-flow .prose{max-width:680px}
+  .about-flow .prose p{font-size:17px;line-height:1.62}
+  .about-pivot{margin:42px 0 24px;padding-top:28px}
+  .text-grid{grid-template-columns:1fr;gap:28px}
+  .section-label{position:static}
+  .prose{max-width:680px}
+  .prose p{font-size:17px;line-height:1.62}
+  .page-cta{padding:92px 0 104px}
+}
+@media(max-width:600px){
+  .shell{width:calc(100% - 30px)}
+  .page-hero{min-height:48svh;padding:108px 0 46px}
+  .kicker{font-size:9px;margin-bottom:20px}
+  .page-title{font-size:clamp(58px,18vw,84px)}
+  .lead{font-size:clamp(29px,9vw,40px);margin-top:28px}
+  .text-section,.dark-section{padding:72px 0 78px}
+  .prose p{font-size:16px}
+  .page-cta h2{font-size:clamp(48px,14vw,68px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html#top" aria-label="SICI home"><span class="sici-mark">SICI
+  <span class="sici-star"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="currentColor">
+    <rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/>
+    <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/>
+    <rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/>
+  </g></svg></span>
+</span></a>
+  <nav class="nav">
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+  </nav>
+  <a class="contact-btn" href="contact.html">Contact</a>
+  
+<button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <a href="index.html#top">Home</a>
+    <a href="index.html#m-work" data-desktop-href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="https://sici.dev" target="_blank" rel="noopener">SICI.dev ↗</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+</header>
+
+
+<main>
+  <section class="page-hero">
+    <div class="shell">
+      <div class="kicker">Social Institute of Change and Impact</div>
+      <h1 class="page-title">About SICI</h1>
+      <p class="lead">SICI is focused on understanding how change happens and how meaningful impact is created.</p>
+    </div>
+  </section>
+
+  <section class="about-flow">
+    <div class="shell about-flow-grid">
+      <div class="section-label">Change and Impact</div>
+      <div class="prose">
+        <p>We study how systems behave, how institutions and organisations change, and how impact can be understood, strengthened and measured.</p>
+
+        <p>We bring that understanding into our work with organisations that are trying to create, manage or respond to change. Our aim is to help them make clearer decisions, strengthen their capabilities and turn their objectives into work that can be put into practice.</p>
+
+        <p>Technology and AI are part of how we approach these problems from the outset. We use our experience in both to build practical tools and systems around real needs, whether that means improving an existing process, supporting better decisions or creating a new capability altogether.</p>
+
+        <div class="about-pivot">We work directly with organisations on practical challenges related to change and impact.</div>
+
+        <p class="after-pivot">This can mean helping them clarify direction, strengthen internal systems, improve how they fund or communicate their work, understand a complex issue, or build a new tool or process around a specific need.</p>
+
+        <p>We also publish research and intelligence on issues we think matter. When we see a recurring problem that could be addressed through a better system or technology, we may develop a product or independent initiative around it.</p>
+
+        <p>Working across client projects, research and our own tools helps us stay close to real needs, test ideas in practice and bring what we learn back into our work with organisations.</p>
+
+        <a class="about-work-link" id="aboutWorkLink" href="index.html#work">See our selected work to see this approach in practice →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-cta">
+    <div class="shell">
+      <h2>What Are You Trying to Make Happen?</h2>
+      <p>Tell us what you’re working on, where it gets difficult and what you need to move forward.</p>
+      <a class="cta-link" href="contact.html">Contact SICI →</a>
+    </div>
+  </section>
+</main>
+
+<script>
+
+(()=>{
+  const workLink=document.querySelector('#aboutWorkLink');
+  if(workLink){
+    const mq=matchMedia('(max-width:1000px)');
+    const update=()=>workLink.href=mq.matches?'index.html#m-work':'index.html#work';
+    update();
+    mq.addEventListener?.('change',update);
+  }
+})();
+
+(()=>{
+  const btn=document.querySelector('#mobileMenuBtn');
+  const menu=document.querySelector('#mobileMenu');
+  if(!btn||!menu)return;
+
+  function setMenu(open){
+    menu.classList.toggle('open',open);
+    menu.setAttribute('aria-hidden',String(!open));
+    btn.setAttribute('aria-expanded',String(open));
+    btn.textContent=open?'Close':'Menu';
+    document.body.classList.toggle('menu-open',open);
+  }
+
+  btn.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>setMenu(false));
+  });
+  addEventListener('keydown',e=>{
+    if(e.key==='Escape')setMenu(false);
+  });
+})();
+
+</script>
+</body>
+</html>
