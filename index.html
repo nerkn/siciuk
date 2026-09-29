@@ -605,6 +605,61 @@ h1,h2,h3,p{margin:0}
   object-fit:contain;
   background:#fff;
 }
+
+/* Organisations */
+.partners{
+  padding:126px 0 138px;
+  background:#F1F2F0;
+  color:#08090B;
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+}
+.partners-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:56px;
+  margin-bottom:58px;
+}
+.partners-head h2{
+  max-width:790px;
+  font-size:clamp(52px,6.6vw,92px);
+  line-height:.9;
+  letter-spacing:-.072em;
+  font-weight:800;
+}
+.partners-head p{
+  max-width:290px;
+  padding-bottom:6px;
+  font-size:13px;
+  line-height:1.5;
+  font-weight:600;
+  color:#6E7782;
+}
+.partner-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  border-top:1px solid #C7CBC8;
+  border-left:1px solid #C7CBC8;
+}
+.partner-logo{
+  aspect-ratio:1.55;
+  display:grid;
+  place-items:center;
+  padding:26px;
+  background:#F8F8F6;
+  border-right:1px solid #C7CBC8;
+  border-bottom:1px solid #C7CBC8;
+}
+.partner-logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:72px;
+  object-fit:contain;
+  filter:grayscale(1) contrast(1.08);
+  opacity:.74;
+  mix-blend-mode:multiply;
+}
 .work-visual-grantise:after{
   content:"";
   position:absolute;
@@ -1188,6 +1243,21 @@ h1,h2,h3,p{margin:0}
     background:#fff;
   }
 
+  .partners{padding:82px 0 90px}
+  .partners-head{display:block;margin-bottom:39px}
+  .partners-head h2{
+    max-width:640px;
+    font-size:clamp(44px,8.7vw,66px);
+  }
+  .partners-head p{
+    margin:17px 0 0;
+    padding:0;
+    font-size:12px;
+  }
+  .partner-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .partner-logo{padding:16px;aspect-ratio:1.28}
+  .partner-logo img{max-height:56px}
+
   /* Shared About / CTA at tablet/mobile sizes */
   .about{padding:96px 0 100px}
   .about-grid{grid-template-columns:1fr;gap:38px}
@@ -1766,7 +1836,7 @@ body.intro-active{overflow:hidden}
   <div class="shell">
     <div class="work-head">
       <h2>Selected Work</h2>
-      <p>Products, initiatives, client work and research.</p>
+      <p>A selection of projects, platforms and initiatives we’ve helped shape.</p>
     </div>
 
     <div class="work-list" id="workList">
@@ -2041,7 +2111,7 @@ body.intro-active{overflow:hidden}
     <div class="m-shell">
       <div class="m-work-head">
         <h2>Selected Work</h2>
-        <p>Products, initiatives, client work and research.</p>
+        <p>A selection of projects, platforms and initiatives we’ve helped shape.</p>
       </div>
 
       <div class="m-work-list" id="mWorkList">
@@ -2111,6 +2181,30 @@ body.intro-active{overflow:hidden}
     </div>
   </section>
 
+</section>
+
+<section class="partners" aria-labelledby="partners-heading">
+  <div class="shell">
+    <div class="partners-head">
+      <h2 id="partners-heading">Some of the organisations we’ve worked with.</h2>
+      <p>Partnerships across environmental justice, social impact and public interest.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-logo"><img src="assets/partners/lrc-ksk.png" alt="LRC-KsK" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/sam.png" alt="Sahabat Alam Malaysia" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/ced.png" alt="Centre pour l’Environnement et le Développement" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/sdi.png" alt="Sustainable Development Institute" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/foe-ghana.png" alt="Friends of the Earth Ghana" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/sobrevivencia.png" alt="Sobrevivencia" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/amigas-da-terra.jpg" alt="Amigas da Terra Brasil" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/censat.png" alt="CENSAT Agua Viva" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/afiego.png" alt="Africa Institute for Energy Governance" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/aerc.png" alt="Alliance for Empowering Rural Communities" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/abibinsroma.webp" alt="AbibiNsroma Foundation" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/foe-togo.jpg" alt="Les Amis de la Terre-Togo" loading="lazy"></div>
+      <div class="partner-logo"><img src="assets/partners/milieudefensie.png" alt="Milieudefensie" loading="lazy"></div>
+    </div>
+  </div>
 </section>
 
 <section class="about" id="about">
