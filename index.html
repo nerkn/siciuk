@@ -1516,26 +1516,34 @@ body.intro-active{overflow:hidden}
 
 <script>
 
-/* Homepage opening ident: once per browser session */
+/* Homepage opening ident: first two visits, then at most weekly */
 (()=>{
   const intro=document.querySelector('#siteIntro');
   if(!intro)return;
 
-  const KEY='sici-intro-seen-v1';
-  let seen=false;
-  try{seen=sessionStorage.getItem(KEY)==='1'}catch(e){}
+  const KEY='sici-intro-schedule-v1';
+  const WEEK=7*24*60*60*1000;
+  const now=Date.now();
+  let schedule={count:0,lastShownAt:0};
+  try{
+    const stored=JSON.parse(localStorage.getItem(KEY));
+    if(stored&&Number.isFinite(stored.count)&&Number.isFinite(stored.lastShownAt))schedule=stored;
+  }catch(e){}
 
-  if(seen){
+  const shouldShow=schedule.count<2||now-schedule.lastShownAt>=WEEK;
+
+  if(!shouldShow){
     intro.remove();
     return;
   }
+
+  try{localStorage.setItem(KEY,JSON.stringify({count:schedule.count+1,lastShownAt:now}))}catch(e){}
 
   document.body.classList.add('intro-active');
 
   const finish=()=>{
     intro.classList.add('finished');
     document.body.classList.remove('intro-active');
-    try{sessionStorage.setItem(KEY,'1')}catch(e){}
     setTimeout(()=>intro.remove(),420);
   };
 
