@@ -1,0 +1,23 @@
+name = "sici-careers"
+main = "src/index.js"
+compatibility_date = "2026-10-14"
+
+[vars]
+SITE_ORIGIN = "https://sici.uk"
+CV_BUCKET_NAME = "sici-careers-cv"
+NOTIFICATION_TO = "hello@sici.uk"
+NOTIFICATION_FROM = "SICI Careers <careers@sici.uk>"
+RETENTION_DAYS = "180"
+
+[[r2_buckets]]
+binding = "CV_BUCKET"
+bucket_name = "sici-careers-cv"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sici-careers"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["17 3 * * *"]

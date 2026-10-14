@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Join the SICI Expert Network for potential project-based collaboration.">
+<meta property="og:title" content="Join Our Expert Network — SICI">
+<meta property="og:description" content="Join the SICI Expert Network for potential project-based collaboration.">
+<meta property="og:url" content="https://sici.uk/careers">
+<meta property="og:image" content="https://sici.uk/assets/sici-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>Join Our Expert Network — SICI</title>
+<link rel="canonical" href="https://sici.uk/careers">
+<link rel="icon" href="/assets/sici-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Typography, palette and navigation follow the approved sici.uk HTML, particularly sici_about_final.html. */
+:root{--bg:#FCFCFB;--fg:#08090B;--muted:#626B76;--muted-light:#858D97;--line:#DADDE2;--dark:#08090B;--white:#FCFCFB;--ease:cubic-bezier(.22,.72,.18,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.shell{width:min(calc(100% - 60px),1240px);margin:0 auto}
+.header{position:fixed;z-index:100;top:14px;left:50%;transform:translateX(-50%);width:min(calc(100vw - 28px),1240px);min-height:56px;padding:9px 11px 9px 18px;display:flex;align-items:center;gap:26px;background:rgba(252,252,251,.93);border:1px solid rgba(8,9,11,.08);border-radius:999px;backdrop-filter:blur(16px)}
+.header>a:first-child{display:flex;align-items:center;margin-right:auto}
+.sici-mark{display:inline-flex;align-items:center;font-size:22px;line-height:1;font-weight:800;letter-spacing:-.065em}
+.sici-star{display:inline-flex;width:.48em;height:.48em;margin-left:.03em}
+.sici-star svg{width:100%;height:100%}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a{font-size:11px;font-weight:800}
+.nav a:hover{opacity:.56}
+.contact-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 15px;border-radius:999px;background:#08090B;color:#fff;font-size:10px;font-weight:800}
+.mobile-menu-btn,.mobile-menu{display:none}
+/* Editorial opening: SICI type proportions, restrained spacing. */
+.page-hero{padding:160px 0 76px;border-bottom:1px solid var(--line)}
+.kicker{margin:0 0 30px;font-size:11px;font-weight:800;color:#7C8590;letter-spacing:.01em}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(270px,.58fr);gap:42px;align-items:end}
+.page-title{margin:0;font-size:clamp(66px,8.5vw,118px);line-height:.88;letter-spacing:-.078em;font-weight:800;max-width:920px}
+.hero-intro{margin:0 0 3px;max-width:410px;font-size:clamp(18px,1.6vw,22px);line-height:1.45;letter-spacing:-.022em;font-weight:600;color:#414951}
+.hero-note{font-size:13px;line-height:1.55;color:#626B76;margin:14px 0 0;font-weight:500;max-width:440px}
+.hero-note+.hero-note{margin-top:10px}
+/* The form follows SICI's large editorial label/content section layout. */
+.main-form{padding:24px 0 116px}
+.form-section{display:grid;grid-template-columns:minmax(175px,.53fr) minmax(0,1.47fr);column-gap:clamp(44px,7vw,116px);padding:57px 0 61px;border-bottom:1px solid var(--line)}
+.section-side{padding:3px 0 0}
+.step-number{display:block;font-size:12px;font-weight:800;color:#8d959e;margin-bottom:18px}
+.section-side h2{font-size:clamp(30px,3vw,42px);letter-spacing:-.06em;line-height:1.08;font-weight:800;margin:0 0 15px}
+.section-side p{font-size:14px;line-height:1.65;color:var(--muted);max-width:250px;margin:0}
+.section-main{min-width:0}
+.form-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.field{min-width:0;margin-bottom:22px}
+.field:last-child{margin-bottom:0}
+.field label,.field-label{display:block;margin-bottom:10px;font-size:13px;line-height:1.45;font-weight:800}
+.optional{font-weight:500;color:#7A838E;margin-left:4px}
+.field input:not([type=checkbox]):not([type=file]),.field textarea{display:block;width:100%;height:54px;padding:0 16px;border:1px solid #D2D7DC;background:#fff;border-radius:9px;color:var(--fg);font-size:14px;font-weight:500;outline:none;transition:border-color .16s,box-shadow .16s}
+.field textarea{height:auto;min-height:100px;padding:15px 16px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus{border-color:var(--fg);box-shadow:0 0 0 3px rgba(8,9,11,.06)}
+.field input::placeholder,.field textarea::placeholder{color:#9AA2AB;font-weight:400}
+.field-note{font-size:12px;color:#68727E;line-height:1.5;margin:11px 0 0}
+.messenger-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:15px}
+.messenger-row>span{font-size:12px;color:#68727e;font-weight:600}
+.check-inline{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;cursor:pointer}
+.check-inline input,.consent input{appearance:none;-webkit-appearance:none;display:grid;place-content:center;flex:none;width:19px;height:19px;border:1px solid #AEB6BF;border-radius:5px;background:#fff;margin:0;cursor:pointer}
+.check-inline input:checked,.consent input:checked{background:var(--fg);border-color:var(--fg)}
+.check-inline input:checked:before,.consent input:checked:before{content:'✓';color:#fff;font-weight:800;font-size:13px;line-height:1}
+/* ALL expertise groups are shown by default. Search only filters; no expansion or hidden lists. */
+.expertise-block + .expertise-block{margin-top:58px;padding-top:42px;border-top:1px solid var(--line)}
+.expertise-heading{margin:0 0 7px;font-weight:800;letter-spacing:-.047em;line-height:1.2;font-size:clamp(24px,2.1vw,29px)}
+.expertise-help{margin:0;color:#626B76;font-size:13px;line-height:1.6}
+.skill-search{display:flex;align-items:center;gap:10px;min-height:50px;margin-top:21px;padding:0 14px;border:1px solid #D2D7DC;border-radius:9px;background:#fff}
+.skill-search:focus-within{border-color:#08090B;box-shadow:0 0 0 3px rgba(8,9,11,.045)}
+.skill-search svg{width:18px;height:18px;stroke:#6B7580;stroke-width:1.7;fill:none;flex:none}
+.skill-search input{height:48px;width:100%;min-width:0;border:0;outline:0;background:transparent;color:#08090B;font-size:14px}
+.skill-search input::placeholder{color:#9AA2AB}
+.selection-feedback{margin:14px 0 0;min-height:17px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:#65707B;font-size:12px;line-height:1.5;font-weight:600}
+.selection-clear{border:0;background:none;border-bottom:1px solid #808892;border-radius:0;color:#48535E;padding:0;font-size:11px;font-weight:800;display:none}
+.selection-clear.show{display:inline-block}
+.category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:31px 25px;margin-top:24px;align-items:start}
+.option-category{min-width:0;padding-top:17px;border-top:1px solid #DADDE2}
+.option-category h4{margin:0 0 14px;font-size:15px;line-height:1.3;letter-spacing:-.025em;font-weight:800;color:#08090B}
+.option-list{display:flex;flex-wrap:wrap;align-items:flex-start;gap:7px}
+.skill-option{appearance:none;display:inline-flex;gap:7px;align-items:center;min-height:37px;border:1px solid #D1D6DC;border-radius:8px;background:#fff;color:#323A43;font-size:12px;font-weight:600;text-align:left;line-height:1.27;padding:8px 10px;transition:background .12s,color .12s,border-color .12s}
+.skill-option:hover{border-color:#08090B}
+.skill-option[aria-pressed=true]{border-color:#08090B;background:#08090B;color:#fff}
+.skill-option[aria-pressed=true]::before{content:'✓';font-size:13px;font-weight:800}
+.custom-skill{display:flex;align-items:center;gap:8px;margin-top:29px}
+.custom-skill input{height:46px;flex:1;min-width:0;padding:0 14px;border:1px solid #D2D7DC;border-radius:9px;background:#fff;color:#08090B;font-size:13px;outline:none}
+.custom-skill button{height:46px;flex:none;border:1px solid var(--fg);padding:0 17px;background:var(--fg);color:#fff;border-radius:9px;font-size:12px;font-weight:800}
+.picker-feedback{min-height:18px;margin:10px 0 0;color:#A13E3E;font-size:12px}
+/* CV and final acknowledgements */
+.upload-area{position:relative;display:flex;align-items:center;gap:17px;min-height:112px;padding:23px;border:1px dashed #9FA8B2;border-radius:10px;background:#fff;cursor:pointer}
+.upload-area:hover,.upload-area.drag-over{border-color:var(--fg);background:#f8f8f7}
+.upload-symbol{display:grid;place-items:center;flex:none;width:49px;height:49px;background:#EDEFF0;border-radius:50%}
+.upload-symbol svg{width:22px;height:22px;fill:none;stroke:#08090B;stroke-width:1.7}
+.upload-title{display:block;font-size:14px;font-weight:800;line-height:1.5}
+.upload-desc{display:block;color:#68727C;font-size:12px;line-height:1.6;margin-top:2px}
+.cv-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;border:0!important;opacity:0!important;clip-path:inset(50%)!important;pointer-events:none!important}
+.upload-area:focus-within,.upload-area:focus-visible{outline:2px solid #08090B;outline-offset:3px}
+.invalid-msg{font-size:12px;color:#A13E3E;min-height:14px;margin:8px 0 0}
+.consents{display:grid;gap:20px;margin-top:28px}
+.consent{display:flex;align-items:flex-start;gap:13px;cursor:pointer}
+.consent input{margin-top:3px}
+.consent span{font-size:13px;line-height:1.6;font-weight:500;color:#3E4650}
+.consent strong{font-weight:800;color:#08090B}
+.consent .associate-description{display:block;margin-top:8px;font-size:13px;line-height:1.6;color:#3E4650}
+.consent .associate-description+.associate-description{margin-top:5px}
+.consent a{border-bottom:1px solid #08090B;font-weight:800}
+.submit-row{margin-top:31px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.submit-btn{min-height:49px;background:#08090B;color:#fff;border:0;border-radius:999px;padding:0 24px;font-size:13px;font-weight:800}
+.submit-btn:disabled{opacity:.55;cursor:wait}
+.submit-hint{font-size:12px;line-height:1.6;color:#717A84;max-width:360px}
+.form-message{display:none;padding:15px 17px;margin-top:20px;border:1px solid #B9C0C7;border-radius:9px;background:#f2f3f2;color:#343a42;font-size:13px;line-height:1.6}
+.form-message.show{display:block}.form-message.error{border-color:#dbb8b8;background:#fff6f6;color:#8c3333}.form-message.success{border-color:#abcbb4;background:#f4fbf6;color:#285d35}
+.footer{background:#08090B;color:#FCFCFB;padding:66px 0 30px}
+.footer-top{display:flex;justify-content:space-between;align-items:start;gap:44px}.footer-mark{font-size:38px}
+.footer p{font-size:14px;line-height:1.6;max-width:425px;color:#B9BEC5;margin:17px 0 0}
+.footer-links{display:flex;align-items:center;gap:25px;flex-wrap:wrap;padding-top:9px}
+.footer-links a{font-size:11px;font-weight:800}
+.footer-bottom{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #3B3E42;padding-top:22px;margin-top:60px;font-size:11px;color:#AAB0B8}
+@media(max-width:1000px){
+ .shell{width:min(calc(100% - 34px),760px)}
+ .nav,.contact-btn{display:none!important}
+ .header{top:max(10px,env(safe-area-inset-top));width:min(calc(100vw - 20px),740px);padding:9px 11px 9px 16px}
+ .mobile-menu-btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 14px;border:0;border-radius:999px;background:#08090B;color:#fff;font-size:10px;font-weight:800;position:relative;z-index:101}
+ .mobile-menu{display:block;position:fixed;inset:0;z-index:95;background:#08090B;color:#fff;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s ease}
+ .mobile-menu.open{opacity:1;visibility:visible;pointer-events:auto}
+ .mobile-menu-inner{min-height:100svh;width:min(calc(100% - 34px),680px);margin:0 auto;padding:max(110px,calc(env(safe-area-inset-top) + 94px)) 0 54px;display:flex;flex-direction:column;justify-content:flex-end}
+ .mobile-menu-inner a{display:block;padding:15px 0;border-bottom:1px solid #31343A;font-size:clamp(38px,10vw,62px);line-height:.95;font-weight:800;letter-spacing:-.06em}
+ body.menu-open{overflow:hidden}
+ .page-hero{padding:126px 0 64px}
+ .hero-layout{grid-template-columns:1fr;gap:25px}
+ .page-title{font-size:clamp(66px,10vw,97px)}
+ .hero-intro{max-width:660px;font-size:20px}
+ .hero-note{margin-top:9px}
+ .main-form{padding-top:6px}
+ .form-section{grid-template-columns:1fr;gap:28px;padding:44px 0 49px}
+ .section-side h2{font-size:34px;margin-bottom:8px}
+ .section-side p{max-width:700px}
+ .step-number{margin-bottom:10px}
+}
+@media(max-width:600px){
+ .shell{width:calc(100% - 30px)}
+ .page-hero{padding:117px 0 48px}
+ .page-title{font-size:clamp(53px,12vw,72px)}
+ .hero-intro{font-size:17px}
+ .form-row{grid-template-columns:1fr;gap:0}
+ .section-side h2{font-size:31px}
+ .category-grid{grid-template-columns:1fr;gap:21px}
+ .category-grid .option-category{padding-top:14px}
+ .option-category h4{font-size:15px}
+ .expertise-heading{font-size:25px}
+ .skill-option{min-height:37px;font-size:12px}
+ .expertise-block + .expertise-block{margin-top:45px;padding-top:32px}
+ .footer-top,.footer-bottom{display:block}.footer-links{margin-top:31px}.footer-bottom>*+*{display:block;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a href="#application-form" class="sr-only">Skip to application</a>
+<header class="header">
+<a href="/index.html#top" aria-label="SICI home"><span class="sici-mark">SICI<span class="sici-star"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="currentColor"><rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/></g></svg></span></span></a>
+<nav class="nav" aria-label="Main navigation"><a href="/index.html#work">Work</a><a href="/about.html">About</a><a href="/careers">Careers</a><a href="https://sici.dev" target="_blank" rel="noopener noreferrer">SICI.dev ↗</a></nav>
+<a class="contact-btn" href="/contact.html">Contact</a>
+<button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true"><div class="mobile-menu-inner"><a href="/index.html#top">Home</a><a href="/index.html#m-work">Work</a><a href="/about.html">About</a><a href="/careers">Careers</a><a href="https://sici.dev" target="_blank" rel="noopener noreferrer">SICI.dev ↗</a><a href="/contact.html">Contact</a></div></div>
+</header>
+<main>
+<section class="page-hero"><div class="shell"><p class="kicker">SOCIAL INSTITUTE OF CHANGE AND IMPACT &nbsp; / &nbsp; CAREERS</p><div class="hero-layout"><h1 class="page-title">Join Our<br>Expert Network</h1><div><p class="hero-intro">SICI works with independent professionals across different fields and countries.</p><p class="hero-note">We welcome expressions of interest from experts who would like to be considered for future project-based collaborations.</p><p class="hero-note">This is not an application for a specific vacancy. We may contact you when an opportunity matches your expertise.</p></div></div></div></section>
+<form id="application-form" class="main-form" method="post" enctype="multipart/form-data" novalidate>
+<div class="shell">
+<section class="form-section" id="profile" aria-labelledby="detailsTitle"><div class="section-side"><span class="step-number">01 / 03</span><h2 id="detailsTitle">Your details</h2><p>Just the essentials. Your CV tells us the rest.</p></div><div class="section-main">
+<div class="form-row"><div class="field"><label for="fullName">Full name *</label><input id="fullName" name="full_name" type="text" autocomplete="name" placeholder="Your name" maxlength="150" required></div><div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="240" required></div></div>
+<div class="form-row"><div class="field"><label for="country">Country of residence *</label><input id="country" name="country_of_residence" type="text" autocomplete="country-name" list="country-list" placeholder="Start typing a country" maxlength="90" required><datalist id="country-list"></datalist></div><div class="field"><label for="linkedin">LinkedIn profile <span class="optional">Optional</span></label><input id="linkedin" name="linkedin" type="url" inputmode="url" placeholder="https://linkedin.com/in/..."></div></div>
+<div class="field"><label for="phone">Phone number <span class="optional">Optional</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+ Country code and phone number" maxlength="40"><div class="messenger-row"><span>You can also contact me via</span><label class="check-inline"><input id="whatsapp" name="whatsapp" type="checkbox" value="yes"> WhatsApp</label><label class="check-inline"><input id="signal" name="signal" type="checkbox" value="yes"> Signal</label></div><p id="phoneError" class="invalid-msg" aria-live="polite"></p></div>
+</div></section>
+<section class="form-section" id="expertise" aria-labelledby="expertiseTitle"><div class="section-side"><span class="step-number">02 / 03</span><h2 id="expertiseTitle">Your expertise</h2><p>Select the areas you work in. You can choose several in each section.</p></div><div class="section-main">
+<div class="expertise-block skill-picker" data-picker="professional"><h3 class="expertise-heading">Professional expertise *</h3><p class="expertise-help">What kind of work do you do? Select all that apply.</p><div class="skill-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input class="picker-search" type="search" placeholder="Find an area (optional)" aria-label="Search professional expertise" autocomplete="off"></div><div class="selection-feedback"><span class="selected-count" aria-live="polite">No areas selected yet</span><button type="button" class="selection-clear">Clear selection</button></div><div class="category-grid" role="group" aria-label="Professional expertise options"></div><div class="custom-skill"><input type="text" maxlength="75" aria-label="Add another professional expertise" placeholder="Other professional expertise…"><button type="button">Add</button></div><div class="picker-feedback" aria-live="polite"></div></div>
+<div class="expertise-block skill-picker" data-picker="thematic"><h3 class="expertise-heading">Themes & sectors <span class="optional">Optional</span></h3><p class="expertise-help">Which issues or sectors have you worked on? Select as many as relevant.</p><div class="skill-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input class="picker-search" type="search" placeholder="Find a theme (optional)" aria-label="Search thematic expertise" autocomplete="off"></div><div class="selection-feedback"><span class="selected-count" aria-live="polite">No themes selected yet</span><button type="button" class="selection-clear">Clear selection</button></div><div class="category-grid" role="group" aria-label="Thematic expertise options"></div><div class="custom-skill"><input type="text" maxlength="75" aria-label="Add another thematic expertise" placeholder="Other theme or sector…"><button type="button">Add</button></div><div class="picker-feedback" aria-live="polite"></div></div>
+</div></section>
+<section class="form-section" id="application" aria-labelledby="applicationTitle"><div class="section-side"><span class="step-number">03 / 03</span><h2 id="applicationTitle">Your application</h2><p>Attach your CV and you're ready.</p></div><div class="section-main">
+<div class="field"><label for="cvFile">CV / Resume *</label><label class="upload-area" id="uploadArea" for="cvFile" role="button" tabindex="0"><span class="upload-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m0 0L7 8m5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><span class="upload-title" id="uploadTitle">Choose a file or drop it here</span><span class="upload-desc" id="uploadDesc">PDF or DOCX · Up to 10 MB</span></span></label><input class="cv-input" id="cvFile" name="cv" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required><p id="cvError" class="invalid-msg" aria-live="polite"></p></div>
+<div class="field"><label for="additional">Anything else you'd like us to know? <span class="optional">Optional</span></label><textarea id="additional" name="additional_information" placeholder="A short note, if relevant" maxlength="1500"></textarea></div>
+<div class="consents"><label class="consent"><input id="associate" name="associate_interest" type="checkbox" value="yes"><span><strong>Would you also like to be considered for the SICI Associate Network?</strong><span class="associate-description">SICI Associates are a small, selected group of independent professionals who may collaborate with us on projects and be featured on our website.</span><span class="associate-description">If your profile is a good match, we'll contact you to discuss the opportunity and what being an Associate involves.</span></span></label><label class="consent"><input id="privacy" name="future_opportunities_consent" type="checkbox" required value="yes"><span>I consent to SICI retaining and reviewing my information for possible future collaborations, as described in the <a href="https://sici.uk/privacy-policy-2/" target="_blank" rel="noopener noreferrer">Privacy Notice ↗</a>. *</span></label></div>
+<div class="submit-row"><button type="submit" id="submitBtn" class="submit-btn">Submit application ↗</button><span class="submit-hint">We'll contact you if there's a relevant opportunity. Applications do not guarantee future projects.</span></div><div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+</div></section>
+</div></form>
+</main>
+<footer class="footer"><div class="shell"><div class="footer-top"><div><span class="sici-mark footer-mark">SICI<span class="sici-star"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="currentColor"><rect x="17" y="1" width="6" height="19" rx="3"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(60 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(120 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(180 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(240 20 20)"/><rect x="17" y="1" width="6" height="19" rx="3" transform="rotate(300 20 20)"/></g></svg></span></span><p>Strategy, systems and knowledge for change that has to work in the real world.</p></div><nav class="footer-links"><a href="/index.html">Home</a><a href="/index.html#work">Work</a><a href="/about.html">About</a><a href="/careers">Careers</a><a href="/contact.html">Contact</a></nav></div><div class="footer-bottom"><span>© SICI — Social Institute of Change and Impact</span><span>Independent expertise. Practical collaboration.</span></div></div></footer>
+<script>
+// Static preview: configure secure backend before accepting real CVs.
+// Configure these public values after deploying the Careers Worker and creating a Turnstile widget.
+const SUBMISSION_ENDPOINT='';
+const TURNSTILE_SITE_KEY='';
+const AREAS = {
+ professional: [
+  ['Strategy & Organisations',['Strategic Planning','Organisational Development','Change Management','Governance','Institutional Capacity Building','Leadership Development','Human Resources & People','Social Impact Strategy']],
+  ['Funding & Programmes',['Resource Mobilisation','Fundraising & Grant Writing','Grant Management','Programme Design','Project Management','Donor Compliance','Financial Management','Procurement & Operations','Climate Finance']],
+  ['Research & Evaluation',['Monitoring, Evaluation & Learning (MEL)','Impact Evaluation','Social Research','Qualitative Research','Quantitative Research','Policy Analysis','Data Analytics','Knowledge Management','GIS & Mapping']],
+  ['Digital & Technology',['Digital Transformation','Artificial Intelligence (AI)','Software Development','Product & UX Design','Automation & Workflows','Data Systems & Engineering','Cybersecurity','Digital Accessibility','Digital Communications']],
+  ['Campaigns & Engagement',['Advocacy','Campaign Strategy','Strategic Communications','Public Engagement','Stakeholder Engagement','Facilitation','Training & Learning Design','Behaviour Change','Media Relations']],
+  ['Cross-cutting Consultancy',['Gender Mainstreaming','Social Inclusion','Safeguarding','Environmental & Social Safeguards','Risk & Compliance','Human Rights Due Diligence','Conflict Sensitivity','Legal & Regulatory Advice']]
+ ],
+ thematic: [
+  ['Rights & Society',['Human Rights','Democracy & Civic Space','Gender Equality','LGBTQI+ Rights','Disability Inclusion','Child Rights','Social Justice']],
+  ['Climate & Environment',['Climate Change','Climate Adaptation','Biodiversity','Environmental Protection','Just Transition','Sustainable Development','Renewable Energy']],
+  ['Social Development',['Education','Public Health','Migration & Refugees','Humanitarian Action','Poverty & Inequality','Social Protection','Youth & Children']],
+  ['Governance & Economy',['Public Administration','Local Governance','Labour Rights','Economic Development','Social Entrepreneurship','Peacebuilding','Responsible Business']],
+  ['Additional Themes',['Agriculture & Food Systems','Water & Sanitation','Urban Development','Digital Rights','Arts & Culture']]
+ ]
+};
+
+const pickers={};
+function initPicker(kind){
+ const root=document.querySelector(`[data-picker="${kind}"]`);
+ const grid=root.querySelector('.category-grid'),search=root.querySelector('.picker-search'),customInput=root.querySelector('.custom-skill input'),customAdd=root.querySelector('.custom-skill button'),count=root.querySelector('.selected-count'),clear=root.querySelector('.selection-clear'),feedback=root.querySelector('.picker-feedback');
+ const selected=new Set();
+ const flat=AREAS[kind].flatMap(([,items])=>items);
+ const singular=kind==='professional'?'area':'theme';
+ function toggle(value){selected.has(value)?selected.delete(value):selected.add(value);feedback.textContent='';render()}
+ function render(){
+  const q=search.value.trim().toLocaleLowerCase();grid.replaceChildren();
+  const groups=AREAS[kind].map(([title,items])=>[title,items.filter(item=>item.toLocaleLowerCase().includes(q)||title.toLocaleLowerCase().includes(q))]).filter(([,items])=>items.length);
+  for(const [title,items] of groups){
+   const section=document.createElement('section');section.className='option-category';
+   const h=document.createElement('h4');h.textContent=title;
+   const list=document.createElement('div');list.className='option-list';
+   for(const value of items){const button=document.createElement('button');button.type='button';button.className='skill-option';button.textContent=value;button.setAttribute('aria-pressed',String(selected.has(value)));button.addEventListener('click',()=>toggle(value));list.append(button)}
+   section.append(h,list);grid.append(section);
+  }
+  if(q&&!groups.length){const p=document.createElement('p');p.className='expertise-help';p.textContent='No matching areas. Add your own below.';grid.append(p)}
+  const n=selected.size;
+  count.textContent=n?`${n} ${singular}${n===1?'':'s'} selected`:kind==='professional'?'No areas selected yet':'No themes selected yet';
+  clear.classList.toggle('show',n>0);
+ }
+ function addCustom(){const val=customInput.value.trim().replace(/\s+/g,' ');if(!val)return;const existing=[...flat,...selected].find(x=>x.toLocaleLowerCase()===val.toLocaleLowerCase());selected.add(existing||val);customInput.value='';search.value='';render()}
+ search.addEventListener('input',render);
+ customAdd.addEventListener('click',addCustom);
+ customInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addCustom()}});
+ clear.addEventListener('click',()=>{selected.clear();render()});
+ pickers[kind]={values:()=>[...selected],reset:()=>{selected.clear();search.value='';customInput.value='';render()},error:t=>{feedback.textContent=t}};
+ render();
+}
+initPicker('professional');initPicker('thematic');
+const countries=`Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brazil|Brunei|Bulgaria|Burkina Faso|Burundi|Cabo Verde|Cambodia|Cameroon|Canada|Central African Republic|Chad|Chile|China|Colombia|Comoros|Congo (Republic of the)|Costa Rica|Côte d’Ivoire|Croatia|Cuba|Cyprus|Czechia|Democratic Republic of the Congo|Denmark|Djibouti|Dominica|Dominican Republic|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar|Namibia|Nauru|Nepal|Netherlands|New Zealand|Nicaragua|Niger|Nigeria|North Korea|North Macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|São Tomé and Príncipe|Saudi Arabia|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea|South Sudan|Spain|Sri Lanka|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Tunisia|Türkiye|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Vanuatu|Vatican City|Venezuela|Vietnam|Yemen|Zambia|Zimbabwe`.split('|');
+const countryList=document.querySelector('#country-list');countries.forEach(name=>{const o=document.createElement('option');o.value=name;countryList.append(o)});
+
+const cvInput=document.querySelector('#cvFile'),uploadArea=document.querySelector('#uploadArea'),uploadTitle=document.querySelector('#uploadTitle'),uploadDesc=document.querySelector('#uploadDesc'),cvError=document.querySelector('#cvError');
+const MAX_SIZE=10*1024*1024;
+function validateCv(){const file=cvInput.files?.[0];cvError.textContent='';if(!file){cvError.textContent='Please attach your CV.';return false}if(!/\.(pdf|docx)$/i.test(file.name)){cvError.textContent='Please upload a PDF or DOCX file.';return false}if(file.size>MAX_SIZE){cvError.textContent='Your file exceeds the 10 MB limit.';return false}return true}
+cvInput.addEventListener('change',()=>{if(!cvInput.files?.length){uploadTitle.textContent='Choose a file or drop it here';uploadDesc.textContent='PDF or DOCX · Up to 10 MB';return}uploadTitle.textContent=cvInput.files[0].name;uploadDesc.textContent=(cvInput.files[0].size/1024/1024).toFixed(2)+' MB · Click to replace';validateCv()});
+uploadArea.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();cvInput.click()}});
+['dragenter','dragover'].forEach(evt=>uploadArea.addEventListener(evt,e=>{e.preventDefault();uploadArea.classList.add('drag-over')}));
+['dragleave','drop'].forEach(evt=>uploadArea.addEventListener(evt,e=>{e.preventDefault();uploadArea.classList.remove('drag-over')}));
+uploadArea.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0];if(!f)return;const transfer=new DataTransfer();transfer.items.add(f);cvInput.files=transfer.files;cvInput.dispatchEvent(new Event('change',{bubbles:true}))});
+const form=document.querySelector('#application-form'),msg=document.querySelector('#formMessage'),submitBtn=document.querySelector('#submitBtn');
+if(TURNSTILE_SITE_KEY){const captcha=document.createElement('div');captcha.className='cf-turnstile';captcha.dataset.sitekey=TURNSTILE_SITE_KEY;document.querySelector('.submit-row').before(captcha);const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js';script.async=true;document.head.append(script)}
+function status(text,kind='info'){msg.textContent=text;msg.className='form-message show '+kind;msg.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function checkPhone(){const wants=document.querySelector('#whatsapp').checked||document.querySelector('#signal').checked;const ok=!wants||!!document.querySelector('#phone').value.trim();document.querySelector('#phoneError').textContent=ok?'':'Enter a phone number if you select WhatsApp or Signal.';return ok}
+['phone','whatsapp','signal'].forEach(id=>document.getElementById(id).addEventListener('change',checkPhone));
+form.addEventListener('submit',async e=>{
+ e.preventDefault();msg.className='form-message';
+ if(!validateCv()){uploadArea.focus();return}
+ if(!form.checkValidity()){form.reportValidity();return}
+ if(!checkPhone()){document.querySelector('#phone').focus();return}
+ if(!pickers.professional.values().length){pickers.professional.error('Please select at least one professional area.');document.querySelector('[data-picker="professional"] .picker-search').focus();return}
+ if(!SUBMISSION_ENDPOINT||!TURNSTILE_SITE_KEY){status('Applications are not being accepted yet. The secure submission service is being configured; your information has not been sent or stored.');return}
+ const data=new FormData(form);
+ pickers.professional.values().forEach(v=>data.append('professional_expertise[]',v));
+ pickers.thematic.values().forEach(v=>data.append('thematic_expertise[]',v));
+ data.set('whatsapp',document.querySelector('#whatsapp').checked?'yes':'no');
+ data.set('signal',document.querySelector('#signal').checked?'yes':'no');
+ data.set('associate_interest',document.querySelector('#associate').checked?'yes':'no');
+ submitBtn.disabled=true;submitBtn.textContent='Submitting…';
+ try{const response=await fetch(SUBMISSION_ENDPOINT,{method:'POST',body:data});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Submission failed');status(result.notificationSent?'Your application has been submitted. Thank you for your interest in SICI.':'Your application is securely stored. Our email notification could not be sent, but your application was received.','success');form.reset();pickers.professional.reset();pickers.thematic.reset();uploadTitle.textContent='Choose a file or drop it here';uploadDesc.textContent='PDF or DOCX · Up to 10 MB'}
+ catch{status('The application could not be submitted. Please try again later.','error')}
+ finally{submitBtn.disabled=false;submitBtn.textContent='Submit application ↗'}
+});
+(()=>{const btn=document.querySelector('#mobileMenuBtn'),menu=document.querySelector('#mobileMenu');function setMenu(open){menu.classList.toggle('open',open);menu.setAttribute('aria-hidden',String(!open));btn.setAttribute('aria-expanded',String(open));btn.textContent=open?'Close':'Menu';document.body.classList.toggle('menu-open',open)}btn.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)})})();
+</script>
+</body>
+</html>
