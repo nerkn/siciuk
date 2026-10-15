@@ -76,6 +76,14 @@ test('stores an application and encrypted CV and exposes them only after admin a
   const cv = await fetch(`${origin}/api/admin/applications/${application.id}/cv`, { headers: { authorization: auth } });
   assert.equal(cv.status, 200);
   assert.equal(await cv.text(), '%PDF-test document');
+
+  const deleted = await fetch(`${origin}/api/admin/applications/${application.id}`, {
+    method: 'DELETE', headers: { authorization: auth, origin: 'https://sici.uk', 'content-type': 'application/json' },
+    body: JSON.stringify({ confirm: application.id })
+  });
+  assert.equal(deleted.status, 200);
+  assert.deepEqual(await deleted.json(), { ok: true });
+  assert.deepEqual(await (await fetch(`${origin}/api/admin/applications`, { headers: { authorization: auth } })).json(), []);
 });
 
 test('rejects foreign origins and invalid CV signatures', async () => {
