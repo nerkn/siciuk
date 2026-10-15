@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /careers/admin
 
 Sitemap: https://sici.uk/sitemap.xml

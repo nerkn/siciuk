@@ -174,6 +174,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{
 <main>
 <section class="page-hero"><div class="shell"><p class="kicker">SOCIAL INSTITUTE OF CHANGE AND IMPACT &nbsp; / &nbsp; CAREERS</p><div class="hero-layout"><h1 class="page-title">Join Our<br>Expert Network</h1><div><p class="hero-intro">SICI works with independent professionals across different fields and countries.</p><p class="hero-note">We welcome expressions of interest from experts who would like to be considered for future project-based collaborations.</p><p class="hero-note">This is not an application for a specific vacancy. We may contact you when an opportunity matches your expertise.</p></div></div></div></section>
 <form id="application-form" class="main-form" method="post" enctype="multipart/form-data" novalidate>
+<div class="sr-only" aria-hidden="true"><label for="companyWebsite">Leave this field empty</label><input id="companyWebsite" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
 <div class="shell">
 <section class="form-section" id="profile" aria-labelledby="detailsTitle"><div class="section-side"><span class="step-number">01 / 03</span><h2 id="detailsTitle">Your details</h2><p>Just the essentials. Your CV tells us the rest.</p></div><div class="section-main">
 <div class="form-row"><div class="field"><label for="fullName">Full name *</label><input id="fullName" name="full_name" type="text" autocomplete="name" placeholder="Your name" maxlength="150" required></div><div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="240" required></div></div>
@@ -196,8 +197,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{
 <script>
 // Static preview: configure secure backend before accepting real CVs.
 // Configure these public values after deploying the Careers Worker and creating a Turnstile widget.
-const SUBMISSION_ENDPOINT='';
-const TURNSTILE_SITE_KEY='';
+const SUBMISSION_ENDPOINT='/api/careers';
 const AREAS = {
  professional: [
   ['Strategy & Organisations',['Strategic Planning','Organisational Development','Change Management','Governance','Institutional Capacity Building','Leadership Development','Human Resources & People','Social Impact Strategy']],
@@ -260,7 +260,6 @@ uploadArea.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.pre
 ['dragleave','drop'].forEach(evt=>uploadArea.addEventListener(evt,e=>{e.preventDefault();uploadArea.classList.remove('drag-over')}));
 uploadArea.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0];if(!f)return;const transfer=new DataTransfer();transfer.items.add(f);cvInput.files=transfer.files;cvInput.dispatchEvent(new Event('change',{bubbles:true}))});
 const form=document.querySelector('#application-form'),msg=document.querySelector('#formMessage'),submitBtn=document.querySelector('#submitBtn');
-if(TURNSTILE_SITE_KEY){const captcha=document.createElement('div');captcha.className='cf-turnstile';captcha.dataset.sitekey=TURNSTILE_SITE_KEY;document.querySelector('.submit-row').before(captcha);const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js';script.async=true;document.head.append(script)}
 function status(text,kind='info'){msg.textContent=text;msg.className='form-message show '+kind;msg.scrollIntoView({behavior:'smooth',block:'nearest'})}
 function checkPhone(){const wants=document.querySelector('#whatsapp').checked||document.querySelector('#signal').checked;const ok=!wants||!!document.querySelector('#phone').value.trim();document.querySelector('#phoneError').textContent=ok?'':'Enter a phone number if you select WhatsApp or Signal.';return ok}
 ['phone','whatsapp','signal'].forEach(id=>document.getElementById(id).addEventListener('change',checkPhone));
@@ -270,7 +269,6 @@ form.addEventListener('submit',async e=>{
  if(!form.checkValidity()){form.reportValidity();return}
  if(!checkPhone()){document.querySelector('#phone').focus();return}
  if(!pickers.professional.values().length){pickers.professional.error('Please select at least one professional area.');document.querySelector('[data-picker="professional"] .picker-search').focus();return}
- if(!SUBMISSION_ENDPOINT||!TURNSTILE_SITE_KEY){status('Applications are not being accepted yet. The secure submission service is being configured; your information has not been sent or stored.');return}
  const data=new FormData(form);
  pickers.professional.values().forEach(v=>data.append('professional_expertise[]',v));
  pickers.thematic.values().forEach(v=>data.append('thematic_expertise[]',v));
@@ -278,7 +276,7 @@ form.addEventListener('submit',async e=>{
  data.set('signal',document.querySelector('#signal').checked?'yes':'no');
  data.set('associate_interest',document.querySelector('#associate').checked?'yes':'no');
  submitBtn.disabled=true;submitBtn.textContent='Submitting…';
- try{const response=await fetch(SUBMISSION_ENDPOINT,{method:'POST',body:data});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Submission failed');status(result.notificationSent?'Your application has been submitted. Thank you for your interest in SICI.':'Your application is securely stored. Our email notification could not be sent, but your application was received.','success');form.reset();pickers.professional.reset();pickers.thematic.reset();uploadTitle.textContent='Choose a file or drop it here';uploadDesc.textContent='PDF or DOCX · Up to 10 MB'}
+ try{const response=await fetch(SUBMISSION_ENDPOINT,{method:'POST',body:data});const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Submission failed');status('Your application has been submitted securely. Thank you for your interest in SICI.','success');form.reset();pickers.professional.reset();pickers.thematic.reset();uploadTitle.textContent='Choose a file or drop it here';uploadDesc.textContent='PDF or DOCX · Up to 10 MB'}
  catch{status('The application could not be submitted. Please try again later.','error')}
  finally{submitBtn.disabled=false;submitBtn.textContent='Submit application ↗'}
 });
