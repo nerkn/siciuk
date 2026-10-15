@@ -51,8 +51,14 @@ function form({ signature = '%PDF-test document', filename = 'cv.pdf', type = 'a
   data.set('full_name', 'Test Applicant');
   data.set('email', 'applicant@example.org');
   data.set('country_of_residence', 'United Kingdom');
+  data.set('linkedin', 'https://linkedin.com/in/test-applicant');
+  data.set('phone', '+44 7000 000000');
+  data.set('whatsapp', 'yes');
+  data.set('signal', 'no');
   data.append('professional_expertise[]', 'Policy Analysis');
   data.append('thematic_expertise[]', 'Democracy & Civic Space');
+  data.set('additional_information', 'Available for research and advisory work.');
+  data.set('associate_interest', 'yes');
   data.set('future_opportunities_consent', 'yes');
   data.set('cv', new File([signature], filename, { type }));
   return data;
@@ -70,6 +76,21 @@ test('stores an application and encrypted CV and exposes them only after admin a
   const [application] = await listing.json();
   assert.equal(application.full_name, 'Test Applicant');
   assert.equal(application.email, 'applicant@example.org');
+  assert.equal(application.linkedin, 'https://linkedin.com/in/test-applicant');
+  assert.equal(application.phone, '+44 7000 000000');
+  assert.equal(application.whatsapp, true);
+  assert.equal(application.signal, false);
+  assert.deepEqual(application.thematic_expertise, ['Democracy & Civic Space']);
+  assert.equal(application.additional_information, 'Available for research and advisory work.');
+  assert.equal(application.associate_interest, true);
+  assert.equal(application.privacy_consent, true);
+  assert.equal(application.notification_sent, false);
+  const adminPage = await fetch(`${origin}/careers/admin`, { headers: { authorization: auth } });
+  const adminHtml = await adminPage.text();
+  assert.match(adminHtml, /Phone/);
+  assert.match(adminHtml, /LinkedIn/);
+  assert.match(adminHtml, /Thematic expertise/);
+  assert.match(adminHtml, /Additional information/);
 
   const deniedCv = await fetch(`${origin}/api/admin/applications/${application.id}/cv`);
   assert.equal(deniedCv.status, 401);
