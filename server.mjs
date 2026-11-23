@@ -179,7 +179,7 @@ async function cleanupExpired() {
 }
 
 async function submit(req, res) {
-  if (req.headers.origin !== SITE_ORIGIN) return json(res, 403, { error: 'Submission origin is not allowed.' });
+  if (![SITE_ORIGIN, 'https://www.sici.uk'].includes(req.headers.origin)) return json(res, 403, { error: 'Submission origin is not allowed.' });
   const declaredLength = Number(req.headers['content-length'] || 0);
   if (declaredLength > MAX_REQUEST_BYTES) return json(res, 413, { error: 'The application is too large.' });
   const chunks = [];
@@ -211,8 +211,8 @@ async function submit(req, res) {
   if (!(file instanceof File) || !file.size || file.size > MAX_CV_BYTES) return json(res, 400, { error: 'Attach a PDF or DOCX CV up to 10 MB.' });
   const lowerName = file.name.toLowerCase();
   const cv = Buffer.from(await file.arrayBuffer());
-  const pdf = lowerName.endsWith('.pdf') && file.type === 'application/pdf' && cv.subarray(0, 5).toString() === '%PDF-';
-  const docx = lowerName.endsWith('.docx') && file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' && cv.subarray(0, 4).equals(Buffer.from([0x50, 0x4b, 0x03, 0x04]));
+  const pdf = lowerName.endsWith('.pdf') && cv.subarray(0, 5).toString() === '%PDF-';
+  const docx = lowerName.endsWith('.docx') && cv.subarray(0, 4).equals(Buffer.from([0x50, 0x4b, 0x03, 0x04]));
   if (!pdf && !docx) return json(res, 400, { error: 'Attach a valid PDF or DOCX CV up to 10 MB.' });
   if (!(await allowSubmission(ipFor(req)))) return json(res, 429, { error: 'Too many applications from this connection. Try again tomorrow.' });
 
@@ -287,7 +287,7 @@ const server = createServer(async (req, res) => {
     const applicationMatch = url.pathname.match(/^\/api\/admin\/applications\/([0-9a-f-]{36})$/i);
     if (applicationMatch) {
       if (!requireAdmin(req, res)) return;
-      if (req.method !== 'DELETE' || req.headers.origin !== SITE_ORIGIN || !String(req.headers['content-type'] || '').startsWith('application/json')) return json(res, 405, { error: 'Method not allowed.' });
+      if (req.method !== 'DELETE' || ![SITE_ORIGIN, 'https://www.sici.uk'].includes(req.headers.origin) || !String(req.headers['content-type'] || '').startsWith('application/json')) return json(res, 405, { error: 'Method not allowed.' });
       let body;
       try { body = await new Promise((resolveBody, reject) => { let data = ''; req.on('data', part => { data += part; if (data.length > 1000) reject(new Error('Too large')); }); req.on('end', () => resolveBody(JSON.parse(data))); req.on('error', reject); }); } catch { return json(res, 400, { error: 'Confirm the application reference to delete it.' }); }
       if (body.confirm !== applicationMatch[1]) return json(res, 400, { error: 'Confirm the application reference to delete it.' });
