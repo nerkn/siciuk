@@ -4,6 +4,9 @@ import { createReadStream } from 'node:fs';
 import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { Readable } from 'node:stream';
+import { pipeline } from 'node:stream/promises';
+import { applicationsCsv, cvArchivePath, zipFiles } from './admin-export.mjs';
 
 const ROOT = resolve(fileURLToPath(new URL('.', import.meta.url)));
 const DATA_DIR = resolve(process.env.DATA_DIR || join(ROOT, '.careers-data'));
@@ -19,6 +22,7 @@ const ADMIN_HTML = `<!doctype html>
 <style>
 body{font:15px/1.5 system-ui,sans-serif;margin:40px auto;padding:0 20px;max-width:1180px;color:#191919}h1{font-size:28px}p{color:#5a5a5a}table{width:100%;border-collapse:collapse;margin-top:24px}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid #ddd;vertical-align:top}th{font-size:12px;text-transform:uppercase;color:#555}a{color:#125b93}button{border:0;background:none;color:#8c3333;text-decoration:underline;cursor:pointer;padding:0}details summary{cursor:pointer;color:#125b93;white-space:nowrap}.details-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;min-width:min(680px,80vw);padding:16px 4px}.details-grid div{min-width:0}.details-grid .wide{grid-column:1/-1}dt{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#666}dd{margin:3px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.actions{white-space:nowrap}@media(max-width:760px){body{margin:24px auto}table,tbody,tr,td{display:block}thead{display:none}td{border:0;padding:5px 0}tr{border-bottom:1px solid #ddd;padding:12px 0}.details-grid{grid-template-columns:1fr;min-width:0}.details-grid .wide{grid-column:auto}}
 </style></head><body><h1>SICI Expert Network applications</h1><p>Applicant details and CV files are stored encrypted on the SICI Dokploy server. CVs are kept for ${RETENTION_DAYS} days.</p><p id="state">Loading applications…</p>
+<p><a href="/api/admin/exports/applications.csv" download>Download all applications (CSV / Excel)</a> &nbsp; · &nbsp; <a href="/api/admin/exports/cvs.zip" download>Download all CVs (ZIP)</a></p>
 <table><thead><tr><th>Submitted</th><th>Applicant</th><th>Country</th><th>Details</th><th>CV</th><th>Remove</th></tr></thead><tbody id="rows"></tbody></table>
 <script>
 const state=document.querySelector('#state'),rows=document.querySelector('#rows');
@@ -266,6 +270,31 @@ const server = createServer(async (req, res) => {
     if (url.pathname === '/careers/admin' || url.pathname === '/careers/admin/') {
       if (!requireAdmin(req, res)) return;
       return html(res, 200, ADMIN_HTML);
+    }
+    if (['/api/admin/exports/applications.csv', '/api/admin/exports/cvs.zip'].includes(url.pathname)) {
+      if (!requireAdmin(req, res)) return;
+      if (req.method !== 'GET') return json(res, 405, { error: 'Method not allowed.' });
+      const applications = await listApplications();
+      const csv = applicationsCsv(applications);
+      const stamp = new Date().toISOString().slice(0, 10);
+      const headers = { 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff' };
+      if (url.pathname.endsWith('.csv')) {
+        res.writeHead(200, { ...headers, 'content-type': 'text/csv; charset=utf-8', 'content-disposition': `attachment; filename="sici-applications-${stamp}.csv"` });
+        return res.end(csv);
+      }
+      // Fail before starting the download if any CV is missing or unreadable.
+      for (const app of applications) {
+        decrypt(await readFile(join(DATA_DIR, app.id, 'cv.enc')));
+      }
+      async function* entries() {
+        yield { name: 'applications.csv', data: Buffer.from(csv) };
+        for (const app of applications) {
+          yield { name: cvArchivePath(app), data: decrypt(await readFile(join(DATA_DIR, app.id, 'cv.enc'))) };
+        }
+      }
+      res.writeHead(200, { ...headers, 'content-type': 'application/zip', 'content-disposition': `attachment; filename="sici-cvs-${stamp}.zip"` });
+      await pipeline(Readable.from(zipFiles(entries())), res);
+      return;
     }
     if (url.pathname === '/api/admin/applications') {
       if (!requireAdmin(req, res)) return;

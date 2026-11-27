@@ -4,7 +4,7 @@ ENV NODE_ENV=production PORT=3000 DATA_DIR=/data
 WORKDIR /app
 
 RUN apk add --no-cache su-exec
-COPY package.json server.mjs ./
+COPY package.json server.mjs admin-export.mjs ./
 COPY index.html about.html contact.html robots.txt sitemap.xml ./
 COPY careers ./careers
 COPY assets ./assets
